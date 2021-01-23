@@ -1,0 +1,1 @@
+/* This will be background scripts that will create functionality for the adblocker */

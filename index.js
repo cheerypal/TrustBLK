@@ -1,1 +1,3 @@
-alert("testing");
+/* This will interact with the page content
+This will be the main adblocker script.
+*/
