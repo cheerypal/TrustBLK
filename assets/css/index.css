@@ -1,15 +1,15 @@
 @font-face {
-  src: url("../assets//Fonts/Montserrat-Bold.ttf");
+  src: url("../../assets//Fonts/Montserrat-Bold.ttf");
   font-family: "mon-title";
 }
 
 @font-face {
-  src: url("../assets//Fonts/Montserrat-Regular.ttf");
+  src: url("../../assets//Fonts/Montserrat-Regular.ttf");
   font-family: "mon-body";
 }
 
 @font-face {
-  src: url("../assets//Fonts/Montserrat-ExtraLight.ttf");
+  src: url("../../assets//Fonts/Montserrat-ExtraLight.ttf");
   font-family: "mon-light";
 }
 
@@ -24,6 +24,69 @@
 }
 
 body {
-  color: var(--body-color);
+  color: #fff;
   background-color: var(--back-main);
+  margin: 0;
+  padding: 0;
+  height: 400px;
+  width: 350px;
+}
+
+.flex {
+  padding: 10% 15%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  font-family: "mon-title";
+  color: var(--main-color);
+}
+
+.button-group {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  border-top: var(--main-color) 1px solid;
+}
+
+button {
+  width: 33%;
+  margin: 0;
+  padding: 10px 0;
+  background-color: #242424;
+  border: none;
+  color: white;
+}
+
+button:focus {
+  outline: 1px solid var(--main-color);
+}
+
+button:hover {
+  border: var(--main-color) 1px solid;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+
+li {
+  padding: 5% 0;
+  font-size: 1.3em;
+}
+
+.blk-res {
+  float: right;
+  color: var(--main-color);
 }
