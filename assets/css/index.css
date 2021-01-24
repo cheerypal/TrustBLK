@@ -44,6 +44,8 @@ h1 {
   font-size: 3em;
   font-family: "mon-title";
   color: var(--main-color);
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .button-group {
@@ -53,17 +55,19 @@ h1 {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-top: var(--main-color) 1px solid;
+  align-items: center;
 }
 
 button {
   width: 33%;
   margin: 0;
-  padding: 10px 0;
+  padding: 10px 1px;
   background-color: #242424;
   border: none;
   color: white;
+  text-align: center;
 }
 
 button:focus {
