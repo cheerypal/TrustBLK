@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "TrustBlock",
+    "name": "TrustBLK",
     "version": "0.1",
     "description": "Trustworthy and Fair Ad-Blocker",
     "background": {

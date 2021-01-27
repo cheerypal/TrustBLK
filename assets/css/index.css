@@ -76,6 +76,7 @@ button:focus {
 
 button:hover {
   border: var(--main-color) 1px solid;
+  background-color: #0f0f0f;
   cursor: pointer;
 }
 
