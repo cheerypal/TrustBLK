@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (req, send, res) {
       localStorage.setItem("state", "Off");
       console.log("off");
       res({ state: "On" });
-    } else {
+    } else if (req.action === "On") {
       localStorage.setItem("state", "On");
       console.log("on");
       res({ state: "Off" });
