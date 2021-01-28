@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/popup.css" />
     <script src="../scripts/popup.js"></script>
   </head>
   <body>
     <div class="flex">
       <div>
         <h1>TrustBLK</h1>
-        <p>stackoverflow</p>
+        <p id="pageURL">stackoverflow</p>
       </div>
       <div id="stats">
         <ul>
@@ -28,12 +28,15 @@
           <li>Total Blocks <span id="blk-ttl" class="blk-res">0</span></li>
         </ul>
       </div>
+      <div id="blk-msg">
+        <h3>Blocking turned off</h3>
+      </div>
     </div>
     <div id="buttons">
       <div class="button-group">
         <button id="toggle">Turn <span id="tog-res"></span></button>
-        <button>Whitelist Page</button>
-        <button>Settings</button>
+        <button id="white">Whitelist Page</button>
+        <button id="options">Settings</button>
       </div>
     </div>
   </body>

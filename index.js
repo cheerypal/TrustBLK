@@ -5,3 +5,5 @@ This will be the main adblocker script.
 chrome.runtime.sendMessage({ reqState: true }, function (res) {
   console.log(res.state);
 });
+
+/* init browser badge */

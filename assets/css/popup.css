@@ -28,6 +28,7 @@ body {
   background-color: var(--back-main);
   margin: 0;
   padding: 0;
+
   height: 400px;
   width: 350px;
 }
@@ -46,6 +47,12 @@ h1 {
   color: var(--main-color);
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1.4em;
+  font-family: "mon-title";
+  color: #fff;
 }
 
 .button-group {
@@ -70,6 +77,12 @@ button {
   text-align: center;
 }
 
+button:disabled,
+button[disabled] {
+  background-color: #696969;
+  color: #242424;
+}
+
 button:focus {
   outline: 1px solid var(--main-color);
 }
@@ -78,6 +91,12 @@ button:hover {
   border: var(--main-color) 1px solid;
   background-color: #0f0f0f;
   cursor: pointer;
+}
+
+button:disabled:hover {
+  cursor: not-allowed;
+  border: none;
+  background-color: #696969;
 }
 
 ul {
