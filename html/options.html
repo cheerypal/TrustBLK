@@ -12,13 +12,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="../scripts/options.js"></script>
   </head>
   <body>
     <div class="main">
       <h1>Settings</h1>
+      <p>
+        These settings will change the way the ad-blocker will work. Here you
+        can change the rules for blocking and allowing ads, import filter lists
+        and also change how acceptable ads are highlighted.
+      </p>
       <div class="section" id="blocking">
-        <h3>Blocking</h3>
         <div class="card">
+          <h3>Blocking Rules</h3>
           <div class="flex-card">
             <button id="import-block" class="action-btn">Import Rules</button>
             <button id="rule-area-block" class="action-btn">
@@ -27,6 +33,9 @@
           </div>
           <!--File upload -->
           <div id="import-rules">
+            <p class="description">
+              Either drop a rule file in or click the box to import your rules!
+            </p>
             <div class="container-import">
               <div>
                 <i class="fa fa-upload"></i>
@@ -36,6 +45,10 @@
           </div>
           <!--Textarea for rules-->
           <div id="write-rules">
+            <p class="description">
+              Here is your personal filter list for blocking rules. Add more
+              rules here to block more ads!
+            </p>
             <div class="container-text">
               <textarea class="txt-rules"></textarea>
             </div>
@@ -43,8 +56,8 @@
         </div>
       </div>
       <div class="section" id="whiteListing">
-        <h3>Whitelisting</h3>
         <div class="card">
+          <h3>Whitelisting Rules</h3>
           <div class="flex-card">
             <button id="import-white" class="action-btn">Import Rules</button>
             <button id="rule-area-white" class="action-btn">
