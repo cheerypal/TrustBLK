@@ -20,12 +20,24 @@
         <h3>Blocking</h3>
         <div class="card">
           <div class="flex-card">
-            <button class="action-btn">Import Rules</button>
-            <button class="action-btn">Add Rules Directly</button>
+            <button id="import-block" class="action-btn">Import Rules</button>
+            <button id="rule-area-block" class="action-btn">
+              Add Rules Directly
+            </button>
           </div>
-          <div class="flex-card">
-            <div id="import-rules">
-              <div class="container"><i class="fa fa-upload"></i></div>
+          <!--File upload -->
+          <div id="import-rules">
+            <div class="container-import">
+              <div>
+                <i class="fa fa-upload"></i>
+                Open File
+              </div>
+            </div>
+          </div>
+          <!--Textarea for rules-->
+          <div id="write-rules">
+            <div class="container-text">
+              <textarea class="txt-rules"></textarea>
             </div>
           </div>
         </div>
@@ -33,7 +45,12 @@
       <div class="section" id="whiteListing">
         <h3>Whitelisting</h3>
         <div class="card">
-          <div class="flex-card"></div>
+          <div class="flex-card">
+            <button id="import-white" class="action-btn">Import Rules</button>
+            <button id="rule-area-white" class="action-btn">
+              Add Rules Directly
+            </button>
+          </div>
         </div>
       </div>
     </div>

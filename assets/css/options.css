@@ -71,6 +71,7 @@ h3 {
   border-top-right-radius: 32px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.6);
   padding: 20px;
+
   transition: all ease-in-out 0.2s;
 }
 
@@ -88,4 +89,89 @@ h3 {
   border: 1px solid var(--main-color);
   border-radius: 5px;
   font-family: "mon-title";
+  transition: all ease-in-out 0.3s;
+}
+
+.action-btn:hover {
+  background-color: var(--back-main);
+  border-color: #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.action-btn:focus,
+textarea:focus {
+  outline: none;
+  border-color: #fff;
+  background-color: var(--back-main);
+}
+
+#import-rules {
+  padding: 20px;
+}
+
+.container-import {
+  height: 30vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  border: 5px dashed #050505;
+  overflow: hidden;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  transition: all ease-in-out 0.1s;
+}
+
+.container-import:hover,
+textarea:hover {
+  cursor: pointer;
+  border-color: #b6b6b6;
+}
+
+.container-import .fa {
+  color: #008d8d;
+  transition: all ease-in-out 0.1s;
+  font-size: 3em;
+  display: block;
+  padding: 10px;
+}
+
+.container-import:hover .fa {
+  color: #0fc4c4;
+}
+
+.file-open {
+  color: var(--body-color);
+  text-decoration: none;
+}
+
+#write-rules {
+  padding: 20px;
+}
+
+.container-text {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  width: 90%;
+  height: 30vh;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1em;
+  font-family: monospace;
+  padding: 10px;
+  margin: 0;
+  border: 5px dashed #050505;
+  resize: none;
 }
