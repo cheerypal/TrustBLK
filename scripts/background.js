@@ -1,7 +1,6 @@
 /* This will be background scripts that will create functionality for the adblocker */
 
-/* Set up badge for showing how many ad have been blocked */
-
+/* Set up badge for showing how many ads have been blocked */
 chrome.browserAction.setBadgeBackgroundColor({ color: "#161616" });
 
 /* init check for any local storage */

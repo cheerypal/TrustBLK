@@ -17,9 +17,6 @@
   font-family: "mon-body";
   --main-color: #03cfcf;
   --body-color: #cccbcb;
-  --finish-good: #09792d;
-  --finish-med: #e2980f;
-  --finish-bad: #e21c0f;
   --back-main: #161616;
 }
 
@@ -28,7 +25,6 @@ body {
   background-color: var(--back-main);
   margin: 0;
   padding: 0;
-
   height: 400px;
   width: 350px;
 }
