@@ -91,10 +91,43 @@ h3 {
 }
 
 .action-btn:hover {
-  background-color: var(--back-main);
-  border-color: #fff;
-  color: #fff;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  color: #000;
   cursor: pointer;
+}
+
+.end {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.btn-submit {
+  padding: 20px 10px;
+  width: 20%;
+  margin: 3% 0 0 0;
+  outline: none;
+}
+
+@keyframes move-right {
+  0% {
+    padding-left: 5px;
+  }
+  100% {
+    padding-left: 40px;
+  }
+}
+
+.btn-submit:hover {
+  background-color: var(--main-color);
+  color: #000;
+  cursor: pointer;
+  border-color: var(--main-color);
+  animation-name: move-right;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
 }
 
 @keyframes fade-in {
@@ -174,7 +207,7 @@ textarea:hover {
 }
 
 textarea {
-  width: 90%;
+  width: 96%;
   height: 30vh;
   outline: none;
   background-color: transparent;
@@ -185,4 +218,9 @@ textarea {
   margin: 0;
   border: 5px dashed #050505;
   resize: none;
+}
+
+textarea::placeholder {
+  line-height: 20vh;
+  text-align: center;
 }

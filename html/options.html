@@ -34,13 +34,20 @@
           <!--File upload -->
           <div id="import-rules">
             <p class="description">
-              Either drop a rule file in or click the box to import your rules!
+              Either drop a rule file in (*.txt) or click the box to import your
+              rules!
             </p>
             <div class="container-import">
               <div>
                 <i class="fa fa-upload"></i>
                 Open File
               </div>
+            </div>
+            <div class="end">
+              <button id="submit-btn-import" class="action-btn btn-submit">
+                Submit
+                <i class="fa fa-chevron-right"></i>
+              </button>
             </div>
           </div>
           <!--Textarea for rules-->
@@ -50,7 +57,16 @@
               rules here to block more ads!
             </p>
             <div class="container-text">
-              <textarea class="txt-rules"></textarea>
+              <textarea
+                class="txt-rules"
+                placeholder="You have no rules, try adding some!"
+              ></textarea>
+            </div>
+            <div class="end">
+              <button id="submit-btn-import" class="action-btn btn-submit">
+                Submit
+                <i class="fa fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </div>
