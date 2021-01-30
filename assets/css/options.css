@@ -143,11 +143,11 @@ h3 {
 }
 
 #import-rules,
-#write-rules {
-  padding: 20px;
-  display: none;
+#write-rules,
+#import-rules-white,
+#write-rules-white {
   animation-name: fade-in;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
 }
