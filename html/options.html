@@ -37,19 +37,25 @@
               Either drop a rule file in (*.txt) or click the box to import your
               rules!
             </p>
-            <div class="container-import">
-              <div>
+            <form id="file_drop0">
+              <div class="container-import" id="drop-block">
+                <input
+                  type="file"
+                  class="upload-file"
+                  onchange="handleFiles(this.files)"
+                />
                 <i class="fa fa-upload"></i>
-                Open File
+                <span id="filename">Open File</span>
               </div>
-            </div>
-            <div class="end">
-              <button id="submit-btn-import" class="action-btn btn-submit">
-                SAVE
-                <i class="fa fa-chevron-right"></i>
-              </button>
-            </div>
+              <div class="end">
+                <button type="submit" class="action-btn btn-submit">
+                  SAVE
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+            </form>
           </div>
+
           <!--Textarea for rules-->
           <div id="write-rules" style="display: none">
             <p class="description">
@@ -63,7 +69,7 @@
               ></textarea>
             </div>
             <div class="end">
-              <button id="submit-btn-import" class="action-btn btn-submit">
+              <button class="action-btn btn-submit">
                 SAVE
                 <i class="fa fa-chevron-right"></i>
               </button>
@@ -88,18 +94,23 @@
               Either drop a rule file in (*.txt) or click the box to import your
               rules!
             </p>
-            <div class="container-import">
-              <div>
+            <form id="file_drop1">
+              <div class="container-import" id="drop-white">
+                <input
+                  type="file"
+                  class="upload-file"
+                  onchange="handleFiles(this.files)"
+                />
                 <i class="fa fa-upload"></i>
-                Open File
+                <span id="filename">Open File</span>
               </div>
-            </div>
-            <div class="end">
-              <button id="submit-btn-import" class="action-btn btn-submit">
-                SAVE
-                <i class="fa fa-chevron-right"></i>
-              </button>
-            </div>
+              <div class="end">
+                <button type="submit" class="action-btn btn-submit">
+                  SAVE
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+            </form>
           </div>
           <!--Textarea for rules-->
           <div id="write-rules-white" style="display: none">
@@ -114,7 +125,7 @@
               ></textarea>
             </div>
             <div class="end">
-              <button id="submit-btn-import" class="action-btn btn-submit">
+              <button class="action-btn btn-submit">
                 SAVE
                 <i class="fa fa-chevron-right"></i>
               </button>

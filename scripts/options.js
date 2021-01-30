@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var import_rules_white = document.getElementById("import-rules-white");
   var write_rules_white = document.getElementById("write-rules-white");
 
+  /* Drag and drop DOM */
+  var drop_block = document.getElementById("drop-block");
+  var drop_white = document.getElementById("drop-white");
   /* Functions */
 
   /* Actions */
@@ -54,4 +57,54 @@ document.addEventListener("DOMContentLoaded", function () {
       write_rules_white.style.display = "none";
     }
   });
+
+  /* Drag and drop file */
+  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+    drop_block.addEventListener(eventName, preventDefaults, false);
+    drop_white.addEventListener(eventName, preventDefaults, false);
+  });
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  ["dragenter", "dragover"].forEach((eventName) => {
+    drop_block.addEventListener(eventName, highlight, false);
+    drop_white.addEventListener(eventName, highlight, false);
+  });
+  ["dragleave", "drop"].forEach((eventName) => {
+    drop_block.addEventListener(eventName, unhighlight, false);
+    drop_white.addEventListener(eventName, unhighlight, false);
+  });
+
+  function highlight(e) {
+    drop_block.classList.add("highlight");
+    drop_white.classList.add("highlight");
+  }
+
+  function unhighlight(e) {
+    drop_block.classList.remove("highlight");
+    drop_white.classList.remove("highlight");
+  }
+
+  drop_block.addEventListener("drop", handleDrop, false);
+  drop_white.addEventListener("drop", handleDrop, false);
+
+  function handleDrop(e) {
+    let dt = e.dataTransfer;
+    let files = dt.files;
+
+    handleFiles(files);
+  }
+
+  function handleFiles(files) {
+    [...files].forEach(uploadFile);
+  }
+
+  function uploadFile(file) {
+    console.log(file);
+    let show_file = document.getElementById("filename");
+    show_file.innerHTML = file.name;
+  }
 });

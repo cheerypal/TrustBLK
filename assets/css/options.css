@@ -178,6 +178,10 @@ textarea:hover {
   border-color: #b6b6b6;
 }
 
+.highlight {
+  border-color: #b6b6b6;
+}
+
 .container-import .fa {
   color: #008d8d;
   transition: all ease-in-out 0.1s;
@@ -223,4 +227,8 @@ textarea {
 textarea::placeholder {
   line-height: 20vh;
   text-align: center;
+}
+
+.upload-file {
+  display: none;
 }
