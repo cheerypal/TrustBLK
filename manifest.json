@@ -4,7 +4,7 @@
     "version": "0.1",
     "description": "Trustworthy and Fair Ad-Blocker",
     "background": {
-        "scripts": ["./scripts/background.js", "./scripts/requestBlocker.js"]
+        "scripts": ["./scripts/background.js", "./filters/alteredHosts.js", "./scripts/requestBlocker.js"]
     },
     "content_scripts":[
         {
@@ -17,5 +17,5 @@
         "default_popup": "./html/popup.html"
     },
     "options_page": "./html/options.html",
-    "permissions": ["tabs", "webRequest", "webRequestBlocking", "fileSystem", "<all_urls>"]
+    "permissions": ["tabs", "webRequest", "webRequestBlocking", "<all_urls>"]
 }
