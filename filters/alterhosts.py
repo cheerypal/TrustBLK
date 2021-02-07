@@ -1,5 +1,6 @@
-import json
+# create a JSON array of hosts that should be blocked.
 
+import json
 # format the lines of the file so that they are easily read by the chrome api
 def format(x):
     x = x.replace('||', '*://*.')
