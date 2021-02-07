@@ -1,8 +1,10 @@
-# format the lines of the file so that they are easily read by the chrome api
+import json
 
+# format the lines of the file so that they are easily read by the chrome api
 def format(x):
     x = x.replace('||', '*://*.')
     x = x.replace('^', "/*")
+    x = x.replace("\n", "")
     return x
 
 
@@ -14,7 +16,6 @@ with open("hosts.txt", "r") as f:
     # format each line in the file 
     formated_line = [format(line) for line in lines]
     # create a new file for the altered hosts
-    with open("alteredHosts.txt", "w") as nFile:
-        for line in formated_line:
-            nFile.write(line)
+    with open("alteredHosts.json", "w") as nFile:
+        nFile.write(json.dumps(formated_line))
 

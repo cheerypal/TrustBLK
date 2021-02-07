@@ -17,5 +17,5 @@
         "default_popup": "./html/popup.html"
     },
     "options_page": "./html/options.html",
-    "permissions": ["tabs", "webRequest", "webRequestBlocking", "<all_urls>"]
+    "permissions": ["tabs", "webRequest", "webRequestBlocking", "fileSystem", "<all_urls>"]
 }
