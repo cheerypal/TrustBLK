@@ -1,14 +1,1 @@
-[id*="ad-player"],
-[class*="ad-player"],
-[id*="banner"],
-[class*="banner"],
-[id*="ad-banner"],
-[class*="ad-banner"],
-[id*="advertisement"],
-[class*="advertisement"],
-[id*="advert"],
-[class*="advert"],
-[id*="promo"],
-[class*="promo"] {
-  display: none;
-}
+[id*="ad-player"], [class*="ad-player"], [id*="display-ad"], [class*="display-ad"], [id*="masthead-ad"], [class*="masthead-ad"], [id*="banner"], [class*="banner"], [id*="ad-banner"], [class*="ad-banner"], [id*="advertisement"], [class*="advertisement"], [id*="advert"], [class*="advert"]{display : none}
