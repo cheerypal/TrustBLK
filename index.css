@@ -1,0 +1,14 @@
+[id*="ad-player"],
+[class*="ad-player"],
+[id*="banner"],
+[class*="banner"],
+[id*="ad-banner"],
+[class*="ad-banner"],
+[id*="advertisement"],
+[class*="advertisement"],
+[id*="advert"],
+[class*="advert"],
+[id*="promo"],
+[class*="promo"] {
+  display: none;
+}
