@@ -39,14 +39,11 @@
             </p>
             <form id="file_drop0">
               <div class="container-import" id="drop-block">
-                <input
-                  type="file"
-                  class="upload-file"
-                  onchange="handleFiles(this.files)"
-                />
+                <input id="inputfile" type="file" class="upload-file" />
                 <i class="fa fa-upload"></i>
                 <span id="filename">Open File</span>
               </div>
+              <p id="output"></p>
               <div class="end">
                 <button type="submit" class="action-btn btn-submit">
                   SAVE

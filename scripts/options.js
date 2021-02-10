@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* Drag and drop DOM */
   var drop_block = document.getElementById("drop-block");
   var drop_white = document.getElementById("drop-white");
+  var input = document.getElementById("inputfile");
   /* Functions */
 
   /* Actions */
@@ -94,17 +95,39 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleDrop(e) {
     let dt = e.dataTransfer;
     let files = dt.files;
-
     handleFiles(files);
   }
 
-  function handleFiles(files) {
-    [...files].forEach(uploadFile);
-  }
-
-  function uploadFile(file) {
-    console.log(file);
-    let show_file = document.getElementById("filename");
-    show_file.innerHTML = file.name;
-  }
+  /* triggers the click action to allow the user to 
+  open the file explorer to find a filter file. */
+  drop_block.addEventListener("click", openFileExplorer, false);
+  input.addEventListener("change", function (evt) {
+    var files = evt.target.files;
+    handleFiles(files);
+  });
 });
+
+/* Allows the user to open up the file explorer to pick a file to upload */
+
+function openFileExplorer() {
+  var input = document.getElementById("inputfile");
+  input.click();
+}
+
+/* handles the files for when the user inserts the file */
+function handleFiles(files) {
+  [...files].forEach(uploadFile);
+}
+
+/* this will render the file and will make the file readable by the adblocker */
+function uploadFile(file) {
+  var out = document.getElementById("output");
+  console.log(file);
+  let show_file = document.getElementById("filename");
+  show_file.innerHTML = file.name;
+  var fr = new FileReader();
+  fr.onload = function () {
+    out.textContent = fr.result;
+  };
+  fr.readAsText(file);
+}
