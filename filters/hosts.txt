@@ -3586,5 +3586,10 @@
 127.0.0.1 google.co.uk/pagead
 127.0.0.1 google.com/pagead
 127.0.0.1 youtube.com/pagead
+127.0.0.1 youtube.com/youtubei
+127.0.0.1 i.ytimg.com/
 # youtube.com/ptracking
-# youtube.com/api/stats/ads
+# youtube.com/api/stats/ads?
+# youtube.com/api/stats/qoe?
+# googlevideo.com/generate_204
+# i.ytimg.com/generate_204

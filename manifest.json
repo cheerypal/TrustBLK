@@ -4,12 +4,12 @@
     "version": "0.1",
     "description": "Trustworthy and Fair Ad-Blocker",
     "background": {
-        "scripts": ["./scripts/background.js", "./filters/alteredHosts.js", "./scripts/requestBlocker.js"]
+        "scripts": ["./scripts/background.js", "./filters/alteredHosts.js", "./filters/alterCSS.js", "./scripts/requestBlocker.js", "./scripts/inlineBlocker.js"]
     },
     "content_scripts":[
         {
             "matches": ["<all_urls>"],
-            "css": ["index.css"]
+            "js" : ["index.js"]
         }
     ],
     "browser_action":{
@@ -17,5 +17,5 @@
         "default_popup": "./html/popup.html"
     },
     "options_page": "./html/options.html",
-    "permissions": ["tabs", "webRequest", "webRequestBlocking", "<all_urls>"]
+    "permissions": ["activeTab", "tabs", "webRequest", "webRequestBlocking", "<all_urls>"]
 }
