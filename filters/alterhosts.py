@@ -2,8 +2,16 @@
 
 # format line
 def format(x):
-    x = x.replace('127.0.0.1 ', '*://*.')
-    x = x.replace('\n', "/*")
+   
+    if x[0] == "#":
+        x = x.replace('# ', '*://*.')
+        x = x.replace('\n', "*")
+    else:
+        x = x.replace('127.0.0.1 ', '*://*.')
+        x = x.replace('\n', "/*")
+    
+
+
     return x
 
 
