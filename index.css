@@ -394,10 +394,25 @@ div#adPaneRight,                                   /* live.com */
 div[id^="phpads"],                                 /* dvd2svcd.doom9.net */
 div[id^="advert"],                                 /* cbc.ca */
 div[id^="Div1"][id$="_s"][style*="visible"],       /* dynamic popup generator */
-div[id^="Div1"][id$="_b"][style*="visible"] ,
+div[id^="Div1"][id$="_b"][style*="visible"],
+div[class*="companion-ad-renderer"],
 ytd-promoted-sparkles-web-renderer,
 ytd-display-ad-renderer,
+.ad-interrupting,
 div[data-testid*="placementTracking"] {
+  display: none !important;
+}
+
+.ytp-ad-overlay-slot {
+  display: none !important;
+}
+.ytp-ad-image-overlay {
+  display: none !important;
+}
+.ytp-ad-overlay-image {
+  display: none !important;
+}
+.ytp-ad-overlay-container {
   display: none !important;
 }
 

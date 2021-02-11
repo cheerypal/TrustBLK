@@ -3583,3 +3583,6 @@
 127.0.0.1 zukxd6fkxqn.com
 127.0.0.1 zy16eoat1w.com
 127.0.0.1 zzhc.vnet.cn
+127.0.0.1 google.co.uk/pagead
+127.0.0.1 google.com/pagead
+127.0.0.1 youtube.com/pagead
