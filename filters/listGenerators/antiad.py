@@ -1,0 +1,30 @@
+# format anti-ad block scripts to fit with website scripts
+
+# format line of from file
+def format(x):
+    # remove new line character
+    x = x.replace("\n", "")
+    # check if first item is not - _
+    if  (x[0] != "-") and (x[0] != "_"):
+        x = "/"+str(x)
+    # add * to the end of . - _ paths
+    if x[len(x)-1] == "." or x[len(x)-1] == "-" or x[len(x)-1] == "_":
+        x = str(x)+"*"
+    # skip if the file ends in .js
+    elif x[len(x)-2 : len(x)-0] == "js":
+        x = x.replace("", "")
+    # if file ends with no symbol then add */
+    else:
+        x = str(x)+"/*"
+    print(x)
+    return x
+
+# open the file and format the list then place into filter friendly file
+with open("../lists/anti_ad.txt", "r") as file:
+    lines = file.readlines()
+    with open("../anti_ad_filter.js", "w") as filt:
+        filt.write("const anti_ad = {filter: ")
+        formated_line = [format(line) for line in lines]
+        filt.write(str(formated_line))
+        filt.write("};")
+        print("\nComplete\n")

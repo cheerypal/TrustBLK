@@ -10,4 +10,6 @@ if (typeof Storage !== "undefined") {
     { urls: hosts["hosts"] },
     ["blocking"]
   );
+
+  //chrome.webRequest.onBeforeRequest.addListener(function () {});
 }

@@ -16,14 +16,14 @@ def format(x):
 
 
 # open the file and read all the lines excluding the first 14 lines. These lines are for the author or the list
-with open("hosts.txt", "r") as f:
+with open("../lists/hosts.txt", "r") as f:
     lines = f.readlines()
     lines = lines[14:]
     
     # format each line in the file 
     formated_line = [format(line) for line in lines]
     # create a new js file for the altered hosts
-    with open("alteredHosts.js", "w") as nFile:
+    with open("../alteredHosts.js", "w") as nFile:
         nFile.write("const hosts = {hosts:")
         nFile.write(str(formated_line))
         nFile.write("};")
