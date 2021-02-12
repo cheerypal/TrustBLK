@@ -16,7 +16,7 @@ if (localStorage.BLKState === "Off") {
 }
 
 /* Check AdBlock Status */
-chrome.runtime.onMessage.addListener(function (req, send, res) {
+chrome.runtime.onMessage.addListener((req, send, res) => {
   if (typeof Storage !== "undefined") {
     if (req.reqState && localStorage.BLKState)
       res({ state: localStorage.BLKState });
@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(function (req, send, res) {
 });
 
 /* Change adblock status */
-chrome.runtime.onMessage.addListener(function (req, send, res) {
+chrome.runtime.onMessage.addListener((req, send, res) => {
   if (typeof Storage !== "undefined") {
     if (req.action === "Off") {
       localStorage.setItem("BLKState", "Off");
@@ -41,7 +41,7 @@ chrome.runtime.onMessage.addListener(function (req, send, res) {
 });
 
 /* Reload the page if the adblockers state changes */
-chrome.runtime.onMessage.addListener(function (req, send, res) {
+chrome.runtime.onMessage.addListener((req, send, res) => {
   if (req.reload) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.reload(tabs[0].id);

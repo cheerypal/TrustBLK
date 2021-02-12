@@ -13,10 +13,15 @@ function blockScripts() {
 
 blockScripts();
 
-chrome.runtime.sendMessage({ inject: true }, function (res) {
+chrome.runtime.sendMessage({ inject: true }, (res) => {
   var stylesheet = document.createElement("style");
   stylesheet.nodeType = "text/css";
   stylesheet.innerText = res.styling;
 
   document.head.appendChild(stylesheet);
 });
+
+chrome.runtime.sendMessage(
+  { port: window.location.port, hostname: window.location.hostname },
+  (res) => {}
+);
