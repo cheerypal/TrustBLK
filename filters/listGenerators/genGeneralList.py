@@ -3,7 +3,7 @@
 # 
 
 # format function returns modified string
-def format(x):
+def formatGeneral(x):
     
     # pre parse
     x = x.replace("\n", "")
@@ -37,17 +37,17 @@ def format(x):
         mod_x = str(mod_x)+"/*"
 
     # print and return filter
-    print(mod_x)
+    #print(mod_x)
     return mod_x
 
-
-# read in filters and write the modified filters to the filter file 
-with open("../lists/general.txt", "r") as file:
-    lines = file.readlines()
-    formated_line = [format(line) for line in lines]
-    with open("../blockGeneral.js", "w") as filt:
-        filt.write("const general = {block: ")
-        filt.write(str(formated_line))
-        filt.write("};")
-        print("\nComplete\n")
+def createGeneralList():
+    # read in filters and write the modified filters to the filter file 
+    with open("./filters/lists/general.txt", "r") as file:
+        lines = file.readlines()
+        formated_line = [formatGeneral(line) for line in lines]
+        with open("./filters/blockGeneral.js", "w") as filt:
+            filt.write("const general = {block: ")
+            filt.write(str(formated_line))
+            filt.write("};")
+            print("Completed -> blockGeneral.js")
 
