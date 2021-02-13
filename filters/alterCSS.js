@@ -510,5 +510,25 @@ a[href*="imdb.com/ad/?id="] img[src*="imdb.com/media/"] {
 /*
 * For more examples see http://www.mozilla.org/unix/customizing.html
 */
+
+/* this is top change forbes massive gap*/
+
+.main-content--body {
+  padding-top: 0px !important;
+}
+
+.fbs-ad--top-wrapper.fbs-ad--top-wrapper--sticky{
+  position: fixed !important;
+  top: 0 !important;
+}
+
+.main-content--body {
+  padding-top: 114px;
+}
+.top-ad-container, .ad-rail, div[class*=right-rail], [class*="footer-ad-"]{
+  display:none !important;
+}
+
+
 `,
 };
