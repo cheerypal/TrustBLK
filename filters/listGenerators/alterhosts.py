@@ -2,16 +2,13 @@
 
 # format line
 def format(x):
-   
     if x[0] == "#":
         x = x.replace('# ', '*://*.')
         x = x.replace('\n', "*")
     else:
         x = x.replace('127.0.0.1 ', '*://*.')
         x = x.replace('\n', "/*")
-    
-
-
+    print(x)
     return x
 
 
@@ -27,4 +24,5 @@ with open("../lists/hosts.txt", "r") as f:
         nFile.write("const hosts = {hosts:")
         nFile.write(str(formated_line))
         nFile.write("};")
+        print("\nComplete\n")
 
