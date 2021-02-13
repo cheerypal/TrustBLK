@@ -11,32 +11,25 @@ if (typeof Storage !== "undefined") {
     ["blocking"]
   );
 
-  function thing() {
-    var newFilters = [];
-    for (filter in filterlist) {
-      console.log(req.hostname);
-      let prefix = "*://*.";
-      let suffix = "/*";
-      newFilters.push(prefix + req.hostname + suffix + filterlist[filter]);
-    }
-  }
-
   chrome.webRequest.onBeforeRequest.addListener(
-    function (r) {
-      var hosts = [];
-      if (localStorage.BLKState === "On") {
-        chrome.runtime.onMessage.addListener((req, send, res) => {
-          if (req.hostname) {
-            hosts = ["http://127.0.0.1:5501/test2/antiadblock.js"];
-          }
-        });
-        console.log(r);
-        return { cancel: true };
-      } else {
-        return { cancel: false };
-      }
+    () => {
+      if (localStorage.BLKState === "On") return { cancel: true };
+      else return { cancel: false };
     },
-    { urls: ["http://127.0.0.1:5501/*/antiadblock.js"] },
+    { urls: formatFilterList(anti_ad["filter"]) },
     ["blocking"]
   );
+}
+// i aim to do this next stage using the regex -> *://*/*/*script.*
+/* this will categorise requests by finding the protocol but also the website and sub paths within the website*/
+
+// take in a filter element and change it to *://*/*/*<script>
+// outputs a list full of adblock ready filters
+function formatFilterList(list) {
+  let improvedList = [];
+  let prefix = "*://*/*/*";
+  for (i in list) {
+    improvedList.push(prefix + list[i]);
+  }
+  return improvedList;
 }

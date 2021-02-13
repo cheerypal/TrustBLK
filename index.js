@@ -20,8 +20,3 @@ chrome.runtime.sendMessage({ inject: true }, (res) => {
 
   document.head.appendChild(stylesheet);
 });
-
-chrome.runtime.sendMessage(
-  { port: window.location.port, hostname: window.location.hostname },
-  (res) => {}
-);

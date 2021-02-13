@@ -4,9 +4,8 @@
 def format(x):
     # remove new line character
     x = x.replace("\n", "")
-    # check if first item is not - _
-    if  (x[0] != "-") and (x[0] != "_"):
-        x = "/"+str(x)
+    # replace first instance with *
+    x = "*"+str(x)
     # add * to the end of . - _ paths
     if x[len(x)-1] == "." or x[len(x)-1] == "-" or x[len(x)-1] == "_":
         x = str(x)+"*"
