@@ -1,6 +1,6 @@
 # format the filters from /filter<$jibberish> to */<filter>* or */<filter.js or */<filter>/*
-# then placing them in the file called ../general_block.js
-# as a json array
+# writing to ../general_block.js as a json array
+# 
 
 # format function returns modified string
 def format(x):
@@ -18,7 +18,7 @@ def format(x):
 
     # remove current styling 
     mod_x = mod_x.replace("/*", "")
-    mod_x = mod_x.replace("*", "")
+    
 
     # insert the * at the start of the filter 
     mod_x = "*"+ str(mod_x)
@@ -28,6 +28,9 @@ def format(x):
         mod_x  = str(mod_x)+"*"
     # skip if the file ends in .js
     elif mod_x[len(mod_x)-2 : len(mod_x)-0] == "js":
+        mod_x  =  mod_x.replace("", "")
+    #skip if the file ends in *
+    elif mod_x[len(mod_x)-1] == "*":
         mod_x  =  mod_x.replace("", "")
     # if file ends with no symbol then add */
     else:
