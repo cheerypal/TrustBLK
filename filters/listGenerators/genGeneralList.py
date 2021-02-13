@@ -45,7 +45,7 @@ def format(x):
 with open("../lists/general.txt", "r") as file:
     lines = file.readlines()
     formated_line = [format(line) for line in lines]
-    with open("../generalBlock.js", "w") as filt:
+    with open("../blockGeneral.js", "w") as filt:
         filt.write("const general = {block: ")
         filt.write(str(formated_line))
         filt.write("};")

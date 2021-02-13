@@ -4,7 +4,14 @@
     "version": "0.1",
     "description": "Trustworthy and Fair Ad-Blocker",
     "background": {
-        "scripts": ["./scripts/background.js", "./filters/alteredHosts.js", "./filters/alterCSS.js", "./filters/anti_ad_filter.js","./filters/generalBlock.js" , "./scripts/blocker.js", "./scripts/inlineBlocker.js"]
+        "scripts": [
+            "./filters/blockHosts.js", 
+            "./filters/blockCSS.js", 
+            "./filters/blockAA.js",
+            "./filters/blockGeneral.js", 
+            "./scripts/background.js", 
+            "./scripts/blocker.js"
+        ]
     },
     "content_scripts":[
         {

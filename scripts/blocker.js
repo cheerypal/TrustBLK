@@ -34,6 +34,16 @@ if (typeof Storage !== "undefined") {
     { urls: formatFilterList(general["block"], "*://*/*/") },
     ["blocking"]
   );
+
+  // removes CSS that is associated with ads.
+  // This will send the css that is stored in blockCSS.js to the content script - index.js
+  chrome.runtime.onMessage.addListener((req, send, res) => {
+    if (req.inject) {
+      if (localStorage.BLKState === "On") {
+        res({ styling: css["style"] });
+      }
+    }
+  });
 }
 
 // i aim to do this next stage using the regex -> *://*/*/*script.*

@@ -20,7 +20,7 @@ with open("../lists/hosts.txt", "r") as f:
     # format each line in the file 
     formated_line = [format(line) for line in lines]
     # create a new js file for the altered hosts
-    with open("../alteredHosts.js", "w") as nFile:
+    with open("../blockHosts.js", "w") as nFile:
         nFile.write("const hosts = {hosts:")
         nFile.write(str(formated_line))
         nFile.write("};")

@@ -21,7 +21,7 @@ def format(x):
 # open the file and format the list then place into filter friendly file
 with open("../lists/anti_ad.txt", "r") as file:
     lines = file.readlines()
-    with open("../anti_ad_filter.js", "w") as filt:
+    with open("../blockAA.js", "w") as filt:
         filt.write("const anti_ad = {filter: ")
         formated_line = [format(line) for line in lines]
         filt.write(str(formated_line))
