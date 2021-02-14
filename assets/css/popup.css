@@ -85,14 +85,14 @@ button[disabled] {
 }
 
 button:focus {
-  outline: 1px solid var(--main-color);
+  outline: none;
   background-color: var(--main-color);
   color: var(--back-main);
 }
 
 button:hover {
   color: var(--back-main);
-  border: var(--main-color) 1px solid;
+  border: none;
   background-color: var(--main-color);
   cursor: pointer;
 }
