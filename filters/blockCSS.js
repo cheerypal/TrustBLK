@@ -355,7 +355,7 @@ form[action*="doubleclick.net"] {
 
 #ad, #advert, #ads, #ad-banner, #adbanner, #adbar,  /* general */
 #sponsor, #sponsors, #ad-link, #banner-ad, #masthead-ad, #ad-masthead, #amazon-video-ads-iframe,
-.ad, .advert, .ads, .ad-banner, .adbanner, .adbar,
+.ad, .advert, .ad-banner, .adbanner, .adbar,
 .sponsor, .sponsors,
 .ad-link, .banner-ad, .masthead-ad .ad-masthead,
 #awin, #adstrip, #adbox, #adFrame, #splashFrame,
