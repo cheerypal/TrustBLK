@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       stats.style.display = "none";
       white_btn.disabled = true;
       blkMsg.style.display = "block";
+      document.body.style.height = "320px";
     } else if (state === "On") {
       stats.style.display = "block";
       white_btn.disabled = false;

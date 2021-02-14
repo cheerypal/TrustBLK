@@ -14,10 +14,14 @@
 }
 :root {
   font-family: "mon-body";
-  --main-color: #03cfcf;
-  --body-color: #cccbcb;
-  --back-main: #161616;
-  --card-back: #1d1d1d;
+  --main-color: #f5cb5c;
+  --body-color: #cfdbd5;
+  --back-main: #242423;
+  --card-back: #242423;
+  --btn-text: #cfdbd5;
+  --btn-highlight: #f5cb5c;
+  --highlight: #000;
+  --cont-color: #f5cb5c;
 }
 
 ::-webkit-scrollbar {
@@ -67,9 +71,13 @@ h3 {
 .card {
   background-color: var(--card-back);
   width: 100%;
-  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
   padding: 30px;
   transition: all ease-in-out 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.6);
 }
 
 .flex-card {
@@ -82,7 +90,7 @@ h3 {
   padding: 20px 30px;
   width: 45%;
   background-color: transparent;
-  color: #fff;
+  color: var(--btn-text);
   border: 1px solid var(--main-color);
   border-radius: 5px;
   font-family: "mon-title";
@@ -91,9 +99,9 @@ h3 {
 }
 
 .action-btn:hover {
-  background-color: var(--main-color);
-  border-color: var(--main-color);
-  color: #000;
+  background-color: var(--btn-highlight);
+  border-color: var(--btn-highlight);
+  color: var(--highlight);
   cursor: pointer;
 }
 
@@ -120,10 +128,10 @@ h3 {
 }
 
 .btn-submit:hover {
-  background-color: var(--main-color);
-  color: #000;
+  background-color: var(--btn-highlight);
+  color: var(--highlight);
   cursor: pointer;
-  border-color: var(--main-color);
+  border-color: var(--btn-highlight);
   animation-name: move-right;
   animation-timing-function: ease-in-out;
   animation-duration: 0.8s;
@@ -164,7 +172,7 @@ h3 {
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  border: 5px dashed #050505;
+  border: 5px dashed var(--main-color);
   overflow: hidden;
   text-align: center;
   padding: 0;
@@ -175,15 +183,15 @@ h3 {
 .container-import:hover,
 textarea:hover {
   cursor: pointer;
-  border-color: #b6b6b6;
+  border-color: var(--main-color);
 }
 
 .highlight {
-  border-color: #b6b6b6;
+  border-color: var(--highlight);
 }
 
 .container-import .fa {
-  color: #008d8d;
+  color: var(--body-color);
   transition: all ease-in-out 0.1s;
   font-size: 3em;
   display: block;
@@ -191,12 +199,16 @@ textarea:hover {
 }
 
 .container-import:hover .fa {
-  color: #0fc4c4;
+  color: var(--cont-color);
 }
 
 .file-open {
   color: var(--body-color);
   text-decoration: none;
+}
+
+#filename {
+  font-family: "mon-title";
 }
 
 .container-text {
@@ -215,12 +227,12 @@ textarea {
   height: 30vh;
   outline: none;
   background-color: transparent;
-  color: white;
+  color: var(--main-color);
   font-size: 1em;
   font-family: monospace;
   padding: 10px;
   margin: 0;
-  border: 5px dashed #050505;
+  border: 5px dashed var(--main-color);
   resize: none;
 }
 

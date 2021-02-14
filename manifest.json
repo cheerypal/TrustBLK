@@ -3,6 +3,12 @@
     "name": "TrustBLK",
     "version": "0.1",
     "description": "Trustworthy and Fair Ad-Blocker",
+    "icons":{
+        "16": "./assets/logo.png",
+        "48": "./assets/logo.png",
+        "128": "./assets/logo.png",
+        "512": "./assets/logo.png"
+    },
     "background": {
         "scripts": [
             "./filters/blockHosts.js", 
