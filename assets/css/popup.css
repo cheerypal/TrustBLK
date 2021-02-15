@@ -118,3 +118,8 @@ li {
   float: right;
   color: var(--main-color);
 }
+
+#pageURL {
+  font-family: "mon-title";
+  font-size: 1.1em;
+}
