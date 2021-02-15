@@ -1,35 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@cheerypal 
-cheerypal
-/
-TrustBLK
-Private
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-TrustBLK/filters/hosts.txt
-@cheerypal
-cheerypal list altered
-Latest commit 9cdf552 4 days ago
- History
- 1 contributor
-3588 lines (3588 sloc)  92.4 KB
-  
 # Blocklist for use with hosts files to block ads, trackers, and other nasty things
 #
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
@@ -3618,8 +3586,6 @@ Latest commit 9cdf552 4 days ago
 127.0.0.1 google.co.uk/pagead
 127.0.0.1 google.com/pagead
 127.0.0.1 youtube.com/pagead
-127.0.0.1 youtube.com/youtubei
-127.0.0.1 i.ytimg.com/
 # youtube.com/ptracking
 # youtube.com/api/stats/ads
 # youtube.com/api/stats/ads?
@@ -3628,3 +3594,8 @@ Latest commit 9cdf552 4 days ago
 # i.ytimg.com/generate_204
 # youtube.com/youtubei/v1/log
 127.0.0.1 cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js
+# youtube.com/api/stats/atr?
+# youtube.com/generate_204?
+# googlevideo.com/generate_204?
+# youtube.com/?pbj
+# youtube.com/get_midroll_info?
