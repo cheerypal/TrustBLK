@@ -31,5 +31,5 @@
         "default_popup": "./html/popup.html"
     },
     "options_page": "./html/options.html",
-    "permissions": ["activeTab", "tabs", "webRequest", "webRequestBlocking", "<all_urls>"]
+    "permissions": ["storage", "activeTab", "tabs", "webRequest", "webRequestBlocking", "<all_urls>"]
 }

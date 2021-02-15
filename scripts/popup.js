@@ -1,5 +1,6 @@
 /* Script for popup actions */
-document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", () => {
   var btn = document.getElementById("toggle");
   var opt_btn = document.getElementById("options");
   var act = document.getElementById("tog-res");
@@ -21,9 +22,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // return a hostname from a url
+  function getHostname(url) {
+    let nURL = "";
+    if (url[5] === ":") {
+      url = url.substr(8, url.length);
+    } else {
+      url = url.substr(7, url.length);
+    }
+    for (i in url) {
+      if (url[i] === "/") {
+        break;
+      } else {
+        nURL += url[i];
+      }
+    }
+    return nURL;
+  }
+
   /* Actions for the on and off button */
-  btn.addEventListener("click", function () {
-    chrome.runtime.sendMessage({ action: act.innerHTML }, function (res) {
+  btn.addEventListener("click", () => {
+    chrome.runtime.sendMessage({ action: act.innerHTML }, (res) => {
       act.innerHTML = res.state;
     });
     chrome.runtime.sendMessage({ reload: true });
@@ -31,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* Check the status of the main adblocker scripts  */
-  chrome.runtime.sendMessage({ reqState: true }, function (res) {
+  chrome.runtime.sendMessage({ reqState: true }, (res) => {
     checkAndDisable(res.state);
     if (res.state === "On") {
       act.innerHTML = "Off";
@@ -41,7 +60,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* Open options page */
-  opt_btn.addEventListener("click", function () {
+  opt_btn.addEventListener("click", () => {
     chrome.runtime.openOptionsPage();
+  });
+
+  // query what tab the user is on and return the hostname to the pageurl section
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    var pageID = document.getElementById("pageURL");
+    let tab = tabs[0].url;
+    pageID.innerHTML = getHostname(tab);
   });
 });

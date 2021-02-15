@@ -399,7 +399,6 @@ div[id^="Div1"][id$="_b"][style*="visible"],
 div[class*="companion-ad-renderer"],
 ytd-promoted-sparkles-web-renderer,
 ytd-display-ad-renderer,
-.ad-interrupting,
 div[data-testid*="placementTracking"] {
  display: none !important;
 }
