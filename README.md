@@ -27,4 +27,4 @@ Additional scripts - to be used when things go wrong!
 _You must have python3 installed!_
 
 [1]: chrome://extensions/
-[logo]: https://github.com/cheerypal/TrustBLK/blob/main/assets/logo16.png "TrustBLK logo"
+[logo]: https://github.com/cheerypal/TrustBLK/blob/main/assets/logo-small.png "TrustBLK logo"
