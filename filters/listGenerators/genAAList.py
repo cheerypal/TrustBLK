@@ -5,12 +5,15 @@ def formatAA(x):
     # remove new line character
     x = x.replace("\n", "")
     # replace first instance with *
-    x = "*"+str(x)
+    if(x[0] == "/"):
+        x = "*"+str(x[1:])
+    else:
+        x = "*"+str(x)
     # add * to the end of . - _ paths
-    if x[len(x)-1] == "." or x[len(x)-1] == "-" or x[len(x)-1] == "_":
+    if x[len(x)-1] == "." or x[len(x)-1] == "-" or x[len(x)-1] == "_" or x[len(x)-1] == "/":
         x = str(x)+"*"
     # skip if the file ends in .js
-    elif x[len(x)-2 : len(x)-0] == "js":
+    elif x[len(x)-2 : len(x)-0] == "js" or x[len(x)-2 : len(x)-0] == "/*":
         x = x.replace("", "")
     # if file ends with no symbol then add */
     else:
