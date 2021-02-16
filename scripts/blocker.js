@@ -21,6 +21,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     currentAds = 0;
     currentScripts = 0;
     currentGen = 0;
+    chrome.browserAction.setBadgeText({ text: "0" });
   }
 });
 
