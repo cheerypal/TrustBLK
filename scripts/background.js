@@ -47,3 +47,12 @@ chrome.runtime.onMessage.addListener((req, send, res) => {
     });
   }
 });
+
+// send total data to popup.
+chrome.runtime.onMessage.addListener((req, send, res) => {
+  if (typeof Storage !== "undefined") {
+    if (req.reqTotal) {
+      res({ tot: localStorage.getItem("tot_blocked") });
+    }
+  }
+});

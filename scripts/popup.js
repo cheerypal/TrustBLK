@@ -1,4 +1,5 @@
 /* Script for popup actions */
+var data = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   var btn = document.getElementById("toggle");
@@ -7,6 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   var white_btn = document.getElementById("white");
   var stats = document.getElementById("stats");
   var blkMsg = document.getElementById("blk-msg");
+
+  // data variables
+  var total = document.getElementById("blk-tot");
+  var scr = document.getElementById("blk-scr");
+  var host = document.getElementById("blk-hst");
 
   /* Check and disable ui on the popup depending on the adblocker's state. */
   function checkAndDisable(state) {
@@ -70,4 +76,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let tab = tabs[0].url;
     pageID.innerHTML = getHostname(tab);
   });
+
+  // get and display blocking numbers - these are the stats that are collected by this adblocker.
+  // in order to keep things simple only total blocked, AA scripts and hosts are collected.
+  chrome.runtime.sendMessage({ reqTotal: true }, (res) => {
+    total.innerHTML = res.tot;
+  });
+  try {
+    chrome.runtime.sendMessage({ reqAds: true }, (res) => {
+      host.innerHTML = res.cur_ads;
+    });
+
+    chrome.runtime.sendMessage({ reqScripts: true }, (res) => {
+      scr.innerHTML = res.cur_scripts;
+    });
+  } catch (e) {}
 });

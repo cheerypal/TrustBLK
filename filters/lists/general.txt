@@ -6451,3 +6451,5 @@
 /pagead2.
 /securepubads.
 /watchtime?ns=yt&el=adunit*
+/bannerAd*
+/banner800*

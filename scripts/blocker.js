@@ -1,30 +1,43 @@
 /* Blocking requests */
 /* Ad-requests and sketchy sites will be blocked here */
 
-var hostCount = 0;
-var aaCount = 0;
-var genCount = 0;
-var overall = 0;
-
 // init counters
-function init() {
-  if (!localStorage.tot_blocked) {
-    localStorage.tot_blocked = 0;
-  }
-  overall = localStorage.getItem("tot_blocked");
-  console.log(overall);
+var overall = 0;
+var currentAds = 0;
+var currentScripts = 0;
+
+// Init storage space for the total blocked stat
+if (!localStorage.tot_blocked) {
+  localStorage.setItem("tot_blocked", 0);
 }
 
-if (typeof Storage !== "undefined") {
-  // init counters -> here we will initialise the counters to 0 if they do not already exist.
-  init();
+// assign overall variable to the storage value.
+overall = localStorage.getItem("tot_blocked");
 
+// if the current page the user is on is in loading state then the stats that are recorded are reset - page stats.
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "loading") {
+    currentAds = 0;
+    currentScripts = 0;
+  }
+});
+
+// Blocking section. This section is grouped by type of blocking measure. Hostname, AA, General -> general paths that are related to advertisement
+if (typeof Storage !== "undefined") {
   // blocks adservers and url based requests
   // this element uses *://*.<url>/<pages>
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On") {
+        currentAds++;
         localStorage.setItem("tot_blocked", overall++);
+        try {
+          chrome.runtime.onMessage.addListener((req, send, res) => {
+            if (req.reqAds) {
+              res({ cur_ads: currentAds });
+            }
+          });
+        } catch (e) {}
         return { cancel: true };
       } else return { cancel: false };
     },
@@ -37,7 +50,15 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On") {
+        currentScripts++;
         localStorage.setItem("tot_blocked", overall++);
+        try {
+          chrome.runtime.onMessage.addListener((req, send, res) => {
+            if (req.reqScripts) {
+              res({ cur_scripts: currentScripts });
+            }
+          });
+        } catch (e) {}
         return { cancel: true };
       } else return { cancel: false };
     },
@@ -50,7 +71,15 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On") {
+        currentAds++;
         localStorage.setItem("tot_blocked", overall++);
+        try {
+          chrome.runtime.onMessage.addListener((req, send, res) => {
+            if (req.reqAds) {
+              res({ cur_ads: currentAds });
+            }
+          });
+        } catch (e) {}
         return { cancel: true };
       } else return { cancel: false };
     },

@@ -53,4 +53,3 @@
 /wp-content/plugins/anti_ad_blocker/*
 _atblockdetector/
 .manifest.googlevideo.com/
-cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js
