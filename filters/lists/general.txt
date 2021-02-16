@@ -6443,3 +6443,11 @@
 /zedo_
 /zergbid.
 /zxy?
+/bannerad
+/api/ads/*
+/generate_204*
+/googleads.
+/pubads.
+/pagead2.
+/securepubads.
+/watchtime?ns=yt&el=adunit*

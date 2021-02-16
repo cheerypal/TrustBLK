@@ -3599,3 +3599,4 @@
 # googlevideo.com/generate_204?
 # youtube.com/?pbj
 # youtube.com/get_midroll_info?
+# youtube.com/pcs/activeview?xai

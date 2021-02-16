@@ -1,13 +1,32 @@
 /* Blocking requests */
 /* Ad-requests and sketchy sites will be blocked here */
 
+var hostCount = 0;
+var aaCount = 0;
+var genCount = 0;
+var overall = 0;
+
+// init counters
+function init() {
+  if (!localStorage.tot_blocked) {
+    localStorage.tot_blocked = 0;
+  }
+  overall = localStorage.getItem("tot_blocked");
+  console.log(overall);
+}
+
 if (typeof Storage !== "undefined") {
+  // init counters -> here we will initialise the counters to 0 if they do not already exist.
+  init();
+
   // blocks adservers and url based requests
   // this element uses *://*.<url>/<pages>
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") return { cancel: true };
-      else return { cancel: false };
+      if (localStorage.BLKState === "On") {
+        localStorage.setItem("tot_blocked", overall++);
+        return { cancel: true };
+      } else return { cancel: false };
     },
     { urls: hosts["hosts"] },
     ["blocking"]
@@ -17,8 +36,10 @@ if (typeof Storage !== "undefined") {
   // this element uses *://*/*/*script.*
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") return { cancel: true };
-      else return { cancel: false };
+      if (localStorage.BLKState === "On") {
+        localStorage.setItem("tot_blocked", overall++);
+        return { cancel: true };
+      } else return { cancel: false };
     },
     { urls: formatFilterList(anti_ad["filter"], "*://*/*/*") },
     ["blocking"]
@@ -28,8 +49,10 @@ if (typeof Storage !== "undefined") {
   // this element uses *://*/*/<item>.* or *://*/*/<item>/*
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") return { cancel: true };
-      else return { cancel: false };
+      if (localStorage.BLKState === "On") {
+        localStorage.setItem("tot_blocked", overall++);
+        return { cancel: true };
+      } else return { cancel: false };
     },
     { urls: formatFilterList(general["block"], "*://*/*/") },
     ["blocking"]
