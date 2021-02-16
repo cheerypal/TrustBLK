@@ -79,16 +79,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // get and display blocking numbers - these are the stats that are collected by this adblocker.
   // in order to keep things simple only total blocked, AA scripts and hosts are collected.
-  chrome.runtime.sendMessage({ reqTotal: true }, (res) => {
-    total.innerHTML = res.tot;
-  });
-  try {
+
+  setTimeout(() => {
+    chrome.runtime.sendMessage({ reqTotal: true }, (res) => {
+      total.innerHTML = res.tot;
+    });
+
     chrome.runtime.sendMessage({ reqAds: true }, (res) => {
-      host.innerHTML = res.cur_ads;
+      try {
+        host.innerHTML = res.cur_ads;
+      } catch (e) {}
     });
 
     chrome.runtime.sendMessage({ reqScripts: true }, (res) => {
-      scr.innerHTML = res.cur_scripts;
+      try {
+        scr.innerHTML = res.cur_scripts;
+      } catch (e) {}
     });
-  } catch (e) {}
+
+    chrome.runtime.sendMessage({ reqGen: true }, (res) => {
+      try {
+        current_val = parseInt(scr.innerHTML);
+        scr.innerHTML = current_val + res.cur_gen;
+      } catch (e) {}
+    });
+  }, 500);
 });

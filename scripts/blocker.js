@@ -5,6 +5,7 @@
 var overall = 0;
 var currentAds = 0;
 var currentScripts = 0;
+var currentGen = 0;
 
 // Init storage space for the total blocked stat
 if (!localStorage.tot_blocked) {
@@ -19,6 +20,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading") {
     currentAds = 0;
     currentScripts = 0;
+    currentGen = 0;
   }
 });
 
@@ -38,6 +40,7 @@ if (typeof Storage !== "undefined") {
             }
           });
         } catch (e) {}
+        chrome.browserAction.setBadgeText({ text: "" + currentAds });
         return { cancel: true };
       } else return { cancel: false };
     },
@@ -71,12 +74,12 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On") {
-        currentAds++;
+        currentGen++;
         localStorage.setItem("tot_blocked", overall++);
         try {
           chrome.runtime.onMessage.addListener((req, send, res) => {
-            if (req.reqAds) {
-              res({ cur_ads: currentAds });
+            if (req.reqGen) {
+              res({ cur_gen: currentGen });
             }
           });
         } catch (e) {}
