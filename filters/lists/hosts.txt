@@ -3601,3 +3601,6 @@
 # youtube.com/?pbj
 # youtube.com/get_midroll_info?
 # youtube.com/pcs/activeview?xai
+# youtube-video.download/y-vd.php
+# youtube.com/ad_companion
+# youtube.com/get_video_info?

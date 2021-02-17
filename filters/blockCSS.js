@@ -189,6 +189,70 @@ a[href*="webtrendslive.com"] img, *[src*="webtrendslive.com"] {
  display: none !important;
 }
 
+#YtKevlarVisibilityIdentifier
+#YtSparklesVisibilityIdentifier
+#feed-pyv-container
+#feedmodule-PRO
+#homepage-chrome-side-promo
+#masthead-ad
+#merch-shelf
+#pla-shelf
+#premium-yva
+#promo-info
+#promo-list
+#search-pva
+#shelf-pyv-container
+#video-masthead
+#watch-branded-actions
+#watch-buy-urls
+#watch-channel-brand-div
+.GoogleActiveViewElement
+.banner-promo-style-type-masthead-v2
+.carousel-offer-url-container
+.companion-ad-container
+.list-view[style="margin: 7px 0pt;"]
+.promoted-sparkles-text-search-root-container
+.promoted-videos
+.searchView.list-view
+.sparkles-light-cta
+.watch-extra-info-column
+.watch-extra-info-right
+.ytd-action-companion-ad-renderer
+.ytd-carousel-ad-renderer
+.ytd-compact-promoted-video-renderer
+.ytd-companion-slot-renderer
+.ytd-merch-shelf-renderer
+.ytd-player-legacy-desktop-watch-ads-renderer
+.ytd-promoted-sparkles-text-search-renderer
+.ytd-promoted-video-renderer
+.ytd-search-pyv-renderer
+.ytd-video-masthead-ad-v3-renderer
+.ytp-ad-action-interstitial-background-container
+.ytp-ad-action-interstitial-slot
+.ytp-ad-image-overlay
+.ytp-ad-overlay-container
+.ytp-ad-progress
+.ytp-ad-progress-list
+YTM-PROMOTED-VIDEO-RENDERER
+[class*="ytd-display-ad-"]
+[layout*="display-ad-"]
+a[href^="http://www.youtube.com/cthru?"]
+a[href^="https://www.youtube.com/cthru?"]
+m.a[onclick*="\"ping_url\":\"http://www.google.com/aclk?"]
+ytd-compact-promoted-video-renderer
+ytd-companion-slot-renderer
+ytd-display-ad-renderer
+ytd-promoted-sparkles-text-search-renderer
+ytd-promoted-sparkles-web-renderer
+ytd-single-option-survey-renderer
+ytd-video-masthead-ad-v3-renderer
+ytm-companion-slot
+ytm-promoted-sparkles-text-search-renderer
+ytm-promoted-sparkles-web-renderer{
+  display:none !important;
+}
+
+
 /* images: by size */
 a img[width="120"][height="240"],
 a img[width="120"][height="600"],
@@ -396,9 +460,6 @@ div[id^="phpads"],                                 /* dvd2svcd.doom9.net */
 div[id^="advert"],                                 /* cbc.ca */
 div[id^="Div1"][id$="_s"][style*="visible"],       /* dynamic popup generator */
 div[id^="Div1"][id$="_b"][style*="visible"],
-div[class*="companion-ad-renderer"],
-ytd-promoted-sparkles-web-renderer,
-ytd-display-ad-renderer,
 div[data-testid*="placementTracking"] {
  display: none !important;
 }
