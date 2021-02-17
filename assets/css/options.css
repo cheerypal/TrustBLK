@@ -105,6 +105,12 @@ h3 {
   cursor: pointer;
 }
 
+.action-btn:focus {
+  background-color: var(--btn-highlight);
+  border-color: var(--btn-highlight);
+  color: var(--highlight);
+}
+
 .end {
   display: flex;
   flex-flow: row wrap;
@@ -227,7 +233,7 @@ textarea {
   height: 30vh;
   outline: none;
   background-color: transparent;
-  color: var(--main-color);
+  color: var(--body-color);
   font-size: 1em;
   font-family: monospace;
   padding: 10px;

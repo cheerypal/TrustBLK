@@ -2,6 +2,17 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* DOM content */
 
+  /* forms */
+  var form1 = document.getElementById("file_drop0");
+  form1.onsubmit = (e) => {
+    e.preventDefault();
+  };
+
+  var form2 = document.getElementById("file_drop1");
+  form2.onsubmit = (e) => {
+    e.preventDefault();
+  };
+
   /* Block Options */
   var import_btn = document.getElementById("import-block");
   var rule_btn = document.getElementById("rule-area-block");
@@ -18,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var drop_block = document.getElementById("drop-block");
   var drop_white = document.getElementById("drop-white");
   var input = document.getElementById("inputfile");
+
+  /* Buttons  */
+
   /* Functions */
 
   /* Actions */
@@ -107,6 +121,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/* form submits */
+var blk_submit = document.getElementById("blk-submit");
+
+var wht_submit = document.getElementById("wht-submit");
+
 /* Allows the user to open up the file explorer to pick a file to upload */
 
 function openFileExplorer() {
@@ -126,8 +145,92 @@ function uploadFile(file) {
   let show_file = document.getElementById("filename");
   show_file.innerHTML = file.name;
   var fr = new FileReader();
-  fr.onload = function () {
-    out.textContent = fr.result;
+  fr.onload = () => {
+    // when the file is loaded do this
+
+    let blk_file = document.getElementById("blk-file-submit");
+    let text_block = document.getElementById("text-block");
+    // when the button is clicked set the blocked saved data to the data just imported
+    blk_file.addEventListener("click", () => {
+      let filters = formatFilters(fr.result);
+      let allowData = JSON.parse(localStorage.getItem("user"))["white"];
+      let data = { block: filters, white: allowData };
+      localStorage.setItem("user", JSON.stringify(data));
+      // place new rules in the textbox
+      text_block.innerHTML = reverseFormatting(data.block);
+    });
   };
   fr.readAsText(file);
+}
+
+// we want this function to format each line of the filter list into a format that can be used to block
+// this will return a list
+function formatFilters(list) {
+  let newList = [];
+  list = list.split("\n");
+  for (i in list) {
+    // remove these additional attributes
+    list[i] = list[i].replace("/*", "");
+    list[i] = list[i].replace("\r", "");
+    list[i] = list[i].replace("\n", "");
+    list[i] = list[i].replace("^", "");
+
+    // remove everything after the $ - this is for easylist
+    let mod_word = "";
+    for (j in list[i]) {
+      if (list[i][j] === "$") {
+        break;
+      } else {
+        mod_word += list[i][j];
+      }
+    }
+
+    list[i] = mod_word;
+
+    // main formatting :
+    // After a format the filter is then added to a new list
+    // if this is a host name then do this
+    if (list[i][0] === "|") {
+      let val = list[i].substring(1, list[i].length);
+      if (val[val.length - 1] === "/") {
+        val = val + "*";
+      } else {
+        val = val + "/*";
+      }
+      newList.push("*://*." + val);
+    }
+    // if this is a host with an extension do this
+    else if (list[i][0] === "#") {
+      let val = list[i].substring(1, list[i].length);
+      newList.push("*://*." + val + "*");
+    }
+    // if its anything else
+    else {
+      let val = list[i];
+      if (val.substring(val.length - 2, val.length - 0) === "js") {
+        val = "*://*/*/*" + val;
+        newList.push(val);
+      } else if (val[val.length - 1] === "*") {
+        val = "*://*/*/*" + val;
+        newList.push(val);
+      } else {
+        val = "*://*/*/*" + val + "*";
+        if (val === "*://*/*/**") {
+          break;
+        }
+        newList.push(val);
+      }
+    }
+  }
+  console.log(newList);
+  return newList;
+}
+
+// format back to standards
+function reverseFormatting(list) {
+  return list
+    .toString()
+    .replaceAll(",", "\n")
+    .replaceAll("*://*.", "||")
+    .replaceAll("*://*/*/*", "");
 }

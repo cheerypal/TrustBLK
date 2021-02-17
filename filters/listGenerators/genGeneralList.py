@@ -24,7 +24,7 @@ def formatGeneral(x):
     mod_x = "*"+ str(mod_x)
 
     # add * to the end of . - _ paths
-    if  mod_x[len(mod_x)-1] == "." or  mod_x[len(mod_x)-1] == "-" or  mod_x[len(mod_x)-1] == "_":
+    if  mod_x[len(mod_x)-1] == "." or  mod_x[len(mod_x)-1] == "-" or  mod_x[len(mod_x)-1] == "_" or  mod_x[len(mod_x)-1] == "?":
         mod_x  = str(mod_x)+"*"
     # skip if the file ends in .js
     elif mod_x[len(mod_x)-2 : len(mod_x)-0] == "js":
