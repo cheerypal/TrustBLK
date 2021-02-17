@@ -111,6 +111,12 @@ h3 {
   color: var(--highlight);
 }
 
+#output {
+  text-align: center;
+  font-family: "mon-title";
+  font-size: 1.2em;
+}
+
 .end {
   display: flex;
   flex-flow: row wrap;

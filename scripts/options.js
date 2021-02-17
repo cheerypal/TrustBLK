@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var import_rules = document.getElementById("import-rules");
   var write_rules = document.getElementById("write-rules");
 
+  var text_block = document.getElementById("text-block");
+
   /* Whitelist options */
   var import_btn_white = document.getElementById("import-block-white");
   var rule_btn_white = document.getElementById("rule-area-white");
@@ -30,9 +32,29 @@ document.addEventListener("DOMContentLoaded", function () {
   var drop_white = document.getElementById("drop-white");
   var input = document.getElementById("inputfile");
 
-  /* Buttons  */
+  /* form submits */
+  var blk_submit = document.getElementById("blk-submit");
+  var wht_submit = document.getElementById("wht-submit");
 
   /* Functions */
+
+  // on load get the block list from storage and present it in the textbox
+  text_block.innerHTML = reverseFormatting(
+    JSON.parse(localStorage.getItem("user"))["block"]
+  );
+
+  // when the user submits typed in data then the data is then added to storage after button clicked
+  blk_submit.addEventListener("click", () => {
+    let output = document.getElementById("output");
+    let filters = formatFilters(text_block.value);
+    let allowData = JSON.parse(localStorage.getItem("user"))["white"];
+    let data = { block: filters, white: allowData };
+    localStorage.setItem("user", JSON.stringify(data));
+    output.innerHTML = "New rules added! Extension will restart in 5 seconds";
+    setTimeout(() => {
+      chrome.runtime.reload();
+    }, 5000);
+  });
 
   /* Actions */
   /* Block settings */
@@ -121,11 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/* form submits */
-var blk_submit = document.getElementById("blk-submit");
-
-var wht_submit = document.getElementById("wht-submit");
-
 /* Allows the user to open up the file explorer to pick a file to upload */
 
 function openFileExplorer() {
@@ -140,24 +157,33 @@ function handleFiles(files) {
 
 /* this will render the file and will make the file readable by the adblocker */
 function uploadFile(file) {
-  var out = document.getElementById("output");
-  console.log(file);
   let show_file = document.getElementById("filename");
   show_file.innerHTML = file.name;
   var fr = new FileReader();
   fr.onload = () => {
     // when the file is loaded do this
 
+    // DOM elements :
+    let out = document.getElementById("output");
     let blk_file = document.getElementById("blk-file-submit");
     let text_block = document.getElementById("text-block");
+    let import_rules = document.getElementById("import-rules");
+    let write_rules = document.getElementById("write-rules");
     // when the button is clicked set the blocked saved data to the data just imported
     blk_file.addEventListener("click", () => {
       let filters = formatFilters(fr.result);
       let allowData = JSON.parse(localStorage.getItem("user"))["white"];
       let data = { block: filters, white: allowData };
       localStorage.setItem("user", JSON.stringify(data));
-      // place new rules in the textbox
+      // place new rules in the textbox and hide the import section
       text_block.innerHTML = reverseFormatting(data.block);
+      import_rules.style.display = "none";
+      write_rules.style.display = "block";
+      out.innerHTML =
+        "Import Complete!<br/>Extension will restart in 5 seconds<br/>Here is your list:";
+      setTimeout(() => {
+        chrome.runtime.reload();
+      }, 5000);
     });
   };
   fr.readAsText(file);
@@ -191,9 +217,10 @@ function formatFilters(list) {
     // After a format the filter is then added to a new list
     // if this is a host name then do this
     if (list[i][0] === "|") {
-      let val = list[i].substring(1, list[i].length);
+      let val = list[i].replaceAll("|", "");
       if (val[val.length - 1] === "/") {
         val = val + "*";
+      } else if (val[val.length - 1] === "*") {
       } else {
         val = val + "/*";
       }
@@ -201,8 +228,10 @@ function formatFilters(list) {
     }
     // if this is a host with an extension do this
     else if (list[i][0] === "#") {
-      let val = list[i].substring(1, list[i].length);
-      newList.push("*://*." + val + "*");
+      let val = list[i].replaceAll("#", "");
+      if (val[val.length - 1] === "*") {
+        newList.push("*://*." + val);
+      } else newList.push("*://*." + val + "*");
     }
     // if its anything else
     else {
@@ -222,7 +251,6 @@ function formatFilters(list) {
       }
     }
   }
-  console.log(newList);
   return newList;
 }
 
