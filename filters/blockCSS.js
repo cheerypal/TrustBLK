@@ -5,9 +5,7 @@ const css = {
 *
 * http://www.gozer.org/mozilla/ad_blocking/
 */
-
 /* --- primary ------------------------------------------------------------ */
-
 /* images, plugins, iframes: domain-specific */
 a[href*="a.consumer.net"] img, *[src*="a.consumer.net"],
 a[href*="a.r.tv.com"] img, *[src*="a.r.tv.com"],
@@ -188,71 +186,6 @@ a[href*="webstat."] img, *[src*="webstat."],
 a[href*="webtrendslive.com"] img, *[src*="webtrendslive.com"] {
  display: none !important;
 }
-
-#YtKevlarVisibilityIdentifier
-#YtSparklesVisibilityIdentifier
-#feed-pyv-container
-#feedmodule-PRO
-#homepage-chrome-side-promo
-#masthead-ad
-#merch-shelf
-#pla-shelf
-#premium-yva
-#promo-info
-#promo-list
-#search-pva
-#shelf-pyv-container
-#video-masthead
-#watch-branded-actions
-#watch-buy-urls
-#watch-channel-brand-div
-.GoogleActiveViewElement
-.banner-promo-style-type-masthead-v2
-.carousel-offer-url-container
-.companion-ad-container
-.list-view[style="margin: 7px 0pt;"]
-.promoted-sparkles-text-search-root-container
-.promoted-videos
-.searchView.list-view
-.sparkles-light-cta
-.watch-extra-info-column
-.watch-extra-info-right
-.ytd-action-companion-ad-renderer
-.ytd-carousel-ad-renderer
-.ytd-compact-promoted-video-renderer
-.ytd-companion-slot-renderer
-.ytd-merch-shelf-renderer
-.ytd-player-legacy-desktop-watch-ads-renderer
-.ytd-promoted-sparkles-text-search-renderer
-.ytd-promoted-video-renderer
-.ytd-search-pyv-renderer
-.ytd-video-masthead-ad-v3-renderer
-.ytp-ad-action-interstitial-background-container
-.ytp-ad-action-interstitial-slot
-.ytp-ad-image-overlay
-.ytp-ad-overlay-container
-.ytp-ad-progress
-.ytp-ad-progress-list
-YTM-PROMOTED-VIDEO-RENDERER
-[class*="ytd-display-ad-"]
-[layout*="display-ad-"]
-a[href^="http://www.youtube.com/cthru?"]
-a[href^="https://www.youtube.com/cthru?"]
-m.a[onclick*="\"ping_url\":\"http://www.google.com/aclk?"]
-ytd-compact-promoted-video-renderer
-ytd-companion-slot-renderer
-ytd-display-ad-renderer
-ytd-promoted-sparkles-text-search-renderer
-ytd-promoted-sparkles-web-renderer
-ytd-single-option-survey-renderer
-ytd-video-masthead-ad-v3-renderer
-ytm-companion-slot
-ytm-promoted-sparkles-text-search-renderer
-ytm-promoted-sparkles-web-renderer{
-  display:none !important;
-}
-
-
 /* images: by size */
 a img[width="120"][height="240"],
 a img[width="120"][height="600"],
@@ -275,7 +208,6 @@ a img[width="728"][height="90"],
 a img[width="730"][height="92"] {
  display: none !important;
 }
-
 /* plugins: by size */
 embed[width="120"][height="240"],
 object[width="120"][height="240"],
@@ -319,7 +251,6 @@ embed[width="730"][height="92"],
 object[width="730"][height="92"] {
  display: none !important;
 }
-
 /* iframes: by size */
 iframe[width="120"][height="600"],
 iframe[width="125"][height="300"],
@@ -343,9 +274,7 @@ iframe[width="728"][height="200"],
 iframe[width="730"][height="92"] {
  display: none !important;
 }
-
 /* --- miscellaneous ------------------------------------------------------ */
-
 a[href*="/A="] img, *[src*="/A="],
 a[href*="/ad-"] img, *[src*="/ad-"],
 a[href*="/ad."] img, *[src*="/ad."],
@@ -380,7 +309,6 @@ a[href*="banners."] img, *[src*="banners."],
 a[href*="adframe"] img, *[src*="adframe"] {
  display: none !important;
 }
-
 a.adHeadline,                 /* adbrite.com */
 a[href*="tryaol"] img,
 a[href*="/adlog.pl"] img,
@@ -407,7 +335,6 @@ a img[src*="/publicidad/"], a img[src*="public"][src*="ad"],
 a img[src*="klipmart"], a[name*="klipad"] img {
  display: none !important;
 }
-
 a[alt*="advert"] img,
 object#widgeth,
 span.ad,
@@ -416,7 +343,6 @@ table[background*="advertising.com"],
 form[action*="doubleclick.net"] {
  display: none !important;
 }
-
 #ad, #advert, #ads, #ad-banner, #adbanner, #adbar,  /* general */
 #sponsor, #sponsors, #ad-link, #banner-ad, #masthead-ad, #ad-masthead, #amazon-video-ads-iframe,
 .ad, .advert, .ad-banner, .adbanner, .adbar,
@@ -460,10 +386,12 @@ div[id^="phpads"],                                 /* dvd2svcd.doom9.net */
 div[id^="advert"],                                 /* cbc.ca */
 div[id^="Div1"][id$="_s"][style*="visible"],       /* dynamic popup generator */
 div[id^="Div1"][id$="_b"][style*="visible"],
+div[class*="companion-ad-renderer"],
+ytd-promoted-sparkles-web-renderer,
+ytd-display-ad-renderer,
 div[data-testid*="placementTracking"] {
  display: none !important;
 }
-
 .ytp-ad-overlay-slot {
  display: none !important;
 }
@@ -476,13 +404,11 @@ div[data-testid*="placementTracking"] {
 .ytp-ad-overlay-container {
  display: none !important;
 }
-
 /* minimize the appearance of IntelliTXT ads */
 a.iAs[itxtdid] {
  text-decoration: none !important;
  border-bottom: none !important;
 }
-
 /* minimize the appearance of Kontera ads */
 a.kLink[href="#"] {
  text-decoration: none !important;
@@ -490,9 +416,7 @@ a.kLink[href="#"] {
 span.kLink {
  border-bottom: none !important;
 }
-
 /* --- questionable (should probably identify and (re)move unless common) --- */
-
 iframe[src^="/get_ad.php?"],                               /* geocities */
 iframe[src^="/sponsored-results"],                         /* babelfish */
 iframe[src^="/google/box?"],
@@ -502,7 +426,6 @@ iframe[name="bsadframe"], iframe[src*="advert"], iframe[src*="https://s.amazon-a
 {
  display: none !important;
 }
-
 table table table[width="346"][height="280"],
 table[border="0"][cellpadding="1"][cellspacing="0"][width="626"][bgcolor="#6699cc"],
 table[bordercolor="red"][height="225"][cellspacing="0"][cellpadding="0"][width="190"][bgcolor="white"][border="0"],
@@ -510,9 +433,7 @@ table[width="336"][border="0"][cellspacing="0"][cellpadding="0"][align="right"][
 td[style="border-bottom: 1px solid rgb(204, 204, 204); padding: 7px 3px; background-color: rgb(255, 254, 249);"] {
  display: none !important;
 }
-
 /* --- false positives ---------------------------------------------------- */
-
 /* google: www, images, news, groups, froogle */
 body[onload^="document.gs.reset()"] div.n a[href^="/search?q="] img,
 body[onload^="document.gs.reset()"] div.n a[href^="/images?q="] img,
@@ -522,31 +443,25 @@ body[onload="sf()"] a[href^="/groups?q="] img,
 a img[src^="/froogle_image?q="] {
  display: inline !important;
 }
-
 /* yahoo images (via google) */
 a img[src*="images.google.com/images?q="] {
  display: inline !important;
 }
-
 /* alltheweb.com: images */
 a[href*="click.alltheweb.com/go"] img[src*="fastsearch.net"] {
  display: inline !important;
 }
-
 /* foxnews.com videos */
 /*div#video object embed[src*="/ads"][src*="foxnews.com"] {
  display: inline !important;
 }*/
-
 /* imdb.com: posters/headshots linking fullpage interstitial ads.
             annoying, but the image should be displayed anyway. */
 a[href*="imdb.com/ad/?id="] img[src*="imdb.com/media/"] {
  display: inline !important;
 }
-
 /* happymany.be navigation, other ADSL-related links */
 /*a[href*="/adsl"] img, *[src*="/adsl"] { display: inline !important; }*/
-
 /* internet banking toolbar images on aib.ie (thanks David) */
 @-moz-document url-prefix(https://internetbanking.aib.ie/)
 {
@@ -555,40 +470,30 @@ a[href*="imdb.com/ad/?id="] img[src*="imdb.com/media/"] {
    display: inline !important;
  }
 }
-
 /* Advizia product information */
 /*a[href*="/advizia"] img, *[src*="/advizia"] { display: inline !important; }*/
-
 @-moz-document domain(godaddy.com), domain(secureserver.net) {
  #dropin {
    display: inline !important;
  }
 }
-
 /* ------------------------------------------------------------------------ */
-
 /*
 * For more examples see http://www.mozilla.org/unix/customizing.html
 */
-
 /* this is top change forbes massive gap*/
-
 .main-content--body {
   padding-top: 0px !important;
 }
-
 .fbs-ad--top-wrapper.fbs-ad--top-wrapper--sticky{
   position: fixed !important;
   top: 0 !important;
 }
-
 .main-content--body {
   padding-top: 114px;
 }
 .top-ad-container, .ad-rail, div[class*=right-rail], [class*="footer-ad-"]{
   display:none !important;
 }
-
-
 `,
 };

@@ -28,9 +28,14 @@ body {
   background-color: var(--back-main);
   margin: 0;
   padding: 0;
-  height: 420px;
+  height: 520px;
   width: 320px;
   font-family: "mon-body";
+}
+
+.sub {
+  font-family: "mon-title";
+  font-size: 1.1em;
 }
 
 .flex {
@@ -107,6 +112,8 @@ ul {
   list-style: none;
   text-align: left;
   padding: 0;
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 
 li {
@@ -121,5 +128,15 @@ li {
 
 #pageURL {
   font-family: "mon-title";
-  font-size: 1.1em;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+hr {
+  border-color: #5e5f5e;
+  box-shadow: none;
+  outline: none;
+  color: none;
+  margin: 0;
+  padding: 0;
 }

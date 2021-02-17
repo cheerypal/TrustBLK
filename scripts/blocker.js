@@ -7,6 +7,10 @@ var currentAds = 0;
 var currentScripts = 0;
 var currentGen = 0;
 var userBLKNum = 0;
+localStorage.setItem("page_ads", currentAds);
+localStorage.setItem("page_scr", currentScripts);
+localStorage.setItem("page_gen", currentGen);
+localStorage.setItem("page_user", userBLKNum);
 
 //init user lists
 var userBlock = [];
@@ -36,15 +40,6 @@ console.log(userBlock);
 // if the current page the user is on is in loading state then the stats that are recorded are reset - page stats.
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading") {
-    currentAds = 0;
-    currentScripts = 0;
-    currentGen = 0;
-    userBLKNum = 0;
-    chrome.browserAction.setBadgeText({ text: "0" });
-    localStorage.setItem("page_ads", currentAds);
-    localStorage.setItem("page_scr", currentScripts);
-    localStorage.setItem("page_gen", currentGen);
-    localStorage.setItem("page_user", userBLKNum);
     if (!localStorage.user) {
       localStorage.setItem(
         "user",
