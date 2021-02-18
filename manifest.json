@@ -11,6 +11,7 @@
     },
     "background": {
         "scripts": [
+            "./filters/allow_list.js",
             "./filters/blockHosts.js", 
             "./filters/blockCSS.js", 
             "./filters/blockAA.js",
