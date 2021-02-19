@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* DOM content */
 
   /* forms */
+  // disable form primary function
   var form1 = document.getElementById("file_drop0");
   form1.onsubmit = (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     JSON.parse(localStorage.getItem("user"))["block"]
   );
 
+  // when the DOM loads the textbox contains the rules the user has entered.
   text_block_white.innerHTML = reverseFormatting(
     JSON.parse(localStorage.getItem("user"))["white"]
   );
@@ -63,6 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 5000);
   });
 
+  // when the user submits typed data for whitelisting options.
+  //The data contained in the text box is then parsed and sent to storage
   wht_submit.addEventListener("click", () => {
     let output = document.getElementById("output-white");
     let filters = formatWhiteList(text_block_white.value);
@@ -164,11 +168,13 @@ document.addEventListener("DOMContentLoaded", function () {
   drop_block.addEventListener("click", openFileExplorer, false);
   drop_white.addEventListener("click", openFileExplorerWhite, false);
 
+  // triggers the file input to handle the file when the file has been imported - whitelist
   input.addEventListener("change", function (evt) {
     var files = evt.target.files;
     handleFiles(files);
   });
 
+  // triggers the file input to handle the file when the file has been imported - whitelist
   input_white.addEventListener("change", (evt) => {
     var files = evt.target.files;
     handleFilesWhite(files);
@@ -177,22 +183,24 @@ document.addEventListener("DOMContentLoaded", function () {
   let blk_file = document.getElementById("blk-file-submit");
   let wht_file = document.getElementById("wht-file-submit");
 
+  // disables buttons until a file has been drag and dropped.
   blk_file.disabled = true;
   wht_file.disabled = true;
 });
 
-/* Allows the user to open up the file explorer to pick a file to upload */
+// this will trigger the file explorer menu to open when the container is clicked - block
 function openFileExplorer() {
   var input = document.getElementById("inputfile");
   input.click();
 }
 
+// this will trigger the file explorer menu to open when the container is clicked - whitelist
 function openFileExplorerWhite() {
   var input = document.getElementById("inputFileWhite");
   input.click();
 }
 
-/* handles the files for when the user inserts the file */
+/* handles the files for when the user inserts the file via the blocked drag and drop */
 function handleFiles(files) {
   let show_file = document.getElementById("filename");
   show_file.innerHTML = files[0].name;
@@ -201,6 +209,7 @@ function handleFiles(files) {
   [...files].forEach(uploadFile);
 }
 
+// this will handle how the files will be imported via the whitelist drag and drop
 function handleFilesWhite(files) {
   let show_file = document.getElementById("filenameWhiteList");
   show_file.innerHTML = files[0].name;
@@ -215,7 +224,7 @@ function uploadFile(file) {
   fr.onload = () => {
     // when the file is loaded do this
 
-    // DOM elements :
+    // DOM elements for the blocking form:
     let out = document.getElementById("output");
     let blk_file = document.getElementById("blk-file-submit");
     let text_block = document.getElementById("text-block");
@@ -238,17 +247,19 @@ function uploadFile(file) {
       }, 5000);
     });
 
+    // DOM elements for the whitelisting form:
     let output = document.getElementById("output-white");
     let wht_file = document.getElementById("wht-file-submit");
     let text_block_white = document.getElementById("text-block-white");
     let import_rules_white = document.getElementById("import-rules-white");
     let write_rules_white = document.getElementById("write-rules-white");
-    // when the button is clicked set the white saved data to the data just imported
+    // when the button is clicked set the whitelist saved data to the data just imported
     wht_file.addEventListener("click", () => {
       let filters = formatWhiteList(fr.result);
       let blockData = JSON.parse(localStorage.getItem("user"))["block"];
       let data = { block: blockData, white: filters };
       localStorage.setItem("user", JSON.stringify(data));
+      // place new rules in the textbox and hide the import section
       text_block_white.innerHTML = reverseFormatting(data.white);
       import_rules_white.style.display = "none";
       write_rules_white.style.display = "block";
@@ -336,6 +347,7 @@ function reverseFormatting(list) {
     .replaceAll("*://*/*/*", "");
 }
 
+// formats the whitelist into an easily read list - this data will be placed in the textbox.
 function formatWhiteList(list) {
   let newList = [];
   list = list.split("\n");

@@ -1,3 +1,3 @@
 const allow = {
-  white: ["github.com"],
+  white: ["euangordon.me"],
 };

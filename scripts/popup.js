@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let tab = tabs[0].url;
     let url = getHostname(tab);
 
+    // check whether the site the user is on is currently whitelisted.
+    //If it is whitelisted then display "WhiteListed" and restrict the view of the number of ads that have been blocked.
     pageID.innerHTML = url;
     if (typeof Storage !== "undefined") {
       let white_list = JSON.parse(localStorage.user)["white"];
@@ -49,11 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
           document.body.style.height = "350px";
           btn.disabled = true;
           s.style.display = "block";
+          break;
+        } else {
+          s.style.display = "none";
         }
       }
     }
   });
 
+  // changes to the popup UI when the popup is clicked an loaded.
   if (typeof Storage !== "undefined") {
     if (localStorage.Blocking === "Off") {
       white_btn.innerHTML = "Block Site";

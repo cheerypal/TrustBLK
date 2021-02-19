@@ -112,7 +112,8 @@ h3 {
   color: var(--highlight);
 }
 
-#output {
+#output,
+#output-white {
   text-align: center;
   font-family: "mon-title";
   font-size: 1.2em;
@@ -234,7 +235,8 @@ textarea:hover {
   text-decoration: none;
 }
 
-#filename {
+#filename,
+#filenameWhiteList {
   font-family: "mon-title";
 }
 

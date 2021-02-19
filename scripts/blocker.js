@@ -1,7 +1,8 @@
 /* Blocking requests */
 /* Ad-requests and sketchy sites will be blocked here */
+// CSS is pushed to the content script frkm here.
 
-// init counters
+// init counters and user stored data
 var overall = 0;
 var currentAds = 0;
 var currentScripts = 0;
@@ -20,6 +21,7 @@ if (!localStorage.tot_blocked) {
   localStorage.setItem("tot_blocked", 0);
 }
 
+// establish user stores settings
 if (!localStorage.user) {
   localStorage.setItem(
     "user",
@@ -39,6 +41,7 @@ userBlock = JSON.parse(localStorage.getItem("user"))["block"];
 // if the current page the user is on is in loading state then the stats that are recorded are reset - page stats.
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading") {
+    // if the user storage variabel does not exist - create it and establish basic data.
     if (!localStorage.user) {
       localStorage.setItem(
         "user",
@@ -49,7 +52,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       );
     }
 
-    // check if the site the user is currently on allowed to be accessed with ads.
+    // check if the site the user is currently on is allowed to be accessed with ads.
     let list_allow = allow["white"];
 
     let current = getHostname(tab.url);
