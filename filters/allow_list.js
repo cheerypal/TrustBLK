@@ -1,3 +1,3 @@
 const allow = {
-  white: ["www.businessinsider.com"],
+  white: ["github.com"],
 };

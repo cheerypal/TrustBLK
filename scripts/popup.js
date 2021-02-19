@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
           blkMsg.style.display = "block";
           document.body.style.height = "350px";
           btn.disabled = true;
+          s.style.display = "block";
         }
       }
     }
@@ -55,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (typeof Storage !== "undefined") {
     if (localStorage.Blocking === "Off") {
-      s.style.display = "block";
       white_btn.innerHTML = "Block Site";
     } else {
       s.style.display = "none";
