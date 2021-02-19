@@ -25,7 +25,7 @@ if (!localStorage.user) {
     "user",
     JSON.stringify({
       block: ["*://*.1-1ads.com/*"],
-      white: ["*://*.github.com/*"],
+      white: ["github.com"],
     })
   );
 }
@@ -41,18 +41,17 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading") {
     // check if the site the user is currently on allowed to be accessed with ads.
     let list_allow = allow["white"];
-    console.log(tab);
 
     let current = getHostname(tab.url);
-    for (i in list_allow) {
-      console.log(list_allow[i]);
+    let user_white = JSON.parse(localStorage.user)["white"];
 
-      if (current === list_allow[i]) {
-        localStorage.setItem("BLKState", "Off");
-        chrome.browserAction.setBadgeText({ text: "Off" });
+    let complete = list_allow.concat(user_white);
+    for (i in complete) {
+      if (current !== complete[i]) {
+        localStorage.setItem("Blocking", "On");
       } else {
-        localStorage.setItem("BLKState", "On");
-        chrome.browserAction.setBadgeText({ text: "0" });
+        localStorage.setItem("Blocking", "Off");
+        break;
       }
     }
 
@@ -61,7 +60,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         "user",
         JSON.stringify({
           block: ["*://*.1-1ads.com/*"],
-          white: ["*://*.github.com/*"],
+          white: ["github.com"],
         })
       );
     }
@@ -74,7 +73,7 @@ if (typeof Storage !== "undefined") {
   // this element uses *://*.<url>/<pages>
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") {
+      if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
         localStorage.setItem("tot_blocked", overall++);
         localStorage.setItem("page_ads", ++currentAds);
         chrome.browserAction.setBadgeText({ text: "" + currentAds });
@@ -89,7 +88,7 @@ if (typeof Storage !== "undefined") {
   // this element uses *://*/*/*script.*
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") {
+      if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
         localStorage.setItem("tot_blocked", overall++);
         localStorage.setItem("page_scr", currentScripts++);
         return { cancel: true };
@@ -103,7 +102,7 @@ if (typeof Storage !== "undefined") {
   // this element uses *://*/*/<item>.* or *://*/*/<item>/*
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") {
+      if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
         localStorage.setItem("tot_blocked", overall++);
         localStorage.setItem("page_gen", currentGen++);
         return { cancel: true };
@@ -117,7 +116,7 @@ if (typeof Storage !== "undefined") {
   // It will block hosts and anything else the user types in. The user block list will be formatted before it is inserted into the variable
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
-      if (localStorage.BLKState === "On") {
+      if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
         localStorage.setItem("tot_blocked", overall++);
         localStorage.setItem("page_user", userBLKNum++);
         return { cancel: true };
@@ -131,7 +130,7 @@ if (typeof Storage !== "undefined") {
   // This will send the css that is stored in blockCSS.js to the content script - index.js
   chrome.runtime.onMessage.addListener((req, send, res) => {
     if (req.inject) {
-      if (localStorage.BLKState === "On") {
+      if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
         res({ styling: css["style"] });
       }
     }
@@ -167,6 +166,6 @@ function getHostname(url) {
       nURL += url[i];
     }
   }
-  console.log(nURL);
+
   return nURL;
 }

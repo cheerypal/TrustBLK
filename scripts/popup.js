@@ -1,5 +1,4 @@
 /* Script for popup actions */
-var data = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   var btn = document.getElementById("toggle");
@@ -14,19 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var scr = document.getElementById("blk-scr");
   var host = document.getElementById("blk-hst");
 
-  /* Check and disable ui on the popup depending on the adblocker's state. */
-  function checkAndDisable(state) {
-    if (state === "Off") {
-      stats.style.display = "none";
-      white_btn.disabled = true;
-      blkMsg.style.display = "block";
-      document.body.style.height = "320px";
-    } else if (state === "On") {
-      stats.style.display = "block";
-      white_btn.disabled = false;
-      blkMsg.style.display = "none";
-    }
-  }
+  var s = document.getElementById("state");
 
   // return a hostname from a url
   function getHostname(url) {
@@ -46,6 +33,46 @@ document.addEventListener("DOMContentLoaded", () => {
     return nURL;
   }
 
+  // query what tab the user is on and return the hostname to the pageurl section
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    var pageID = document.getElementById("pageURL");
+    let tab = tabs[0].url;
+    let url = getHostname(tab);
+
+    pageID.innerHTML = url;
+    if (typeof Storage !== "undefined") {
+      let white_list = JSON.parse(localStorage.user)["white"];
+      for (i in white_list) {
+        if (url === white_list[i]) {
+          stats.style.display = "none";
+          blkMsg.style.display = "block";
+          document.body.style.height = "350px";
+          btn.disabled = true;
+        }
+      }
+    }
+  });
+
+  if (typeof Storage !== "undefined") {
+    if (localStorage.Blocking === "Off") {
+      s.style.display = "block";
+      white_btn.innerHTML = "Block Site";
+    } else {
+      s.style.display = "none";
+      white_btn.innerHTML = "Whitelist Site";
+    }
+    if (localStorage.BLKState === "Off") {
+      white_btn.disabled = true;
+      stats.style.display = "none";
+      blkMsg.style.display = "block";
+      document.body.style.height = "350px";
+    } else {
+      btn.disabled = false;
+      white_btn.disabled = false;
+      stats.style.display = "block";
+      blkMsg.style.display = "none";
+    }
+  }
   /* Actions for the on and off button */
   btn.addEventListener("click", () => {
     chrome.runtime.sendMessage({ action: act.innerHTML }, (res) => {
@@ -57,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Check the status of the main adblocker scripts  */
   chrome.runtime.sendMessage({ reqState: true }, (res) => {
-    checkAndDisable(res.state);
     if (res.state === "On") {
       act.innerHTML = "Off";
     } else if (res.state === "Off") {
@@ -70,13 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.runtime.openOptionsPage();
   });
 
-  // query what tab the user is on and return the hostname to the pageurl section
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    var pageID = document.getElementById("pageURL");
-    let tab = tabs[0].url;
-    pageID.innerHTML = getHostname(tab);
-  });
-
   // get and display blocking numbers - these are the stats that are collected by this adblocker.
   // in order to keep things simple only total blocked, AA scripts and hosts are collected.
   total.innerHTML = localStorage.tot_blocked;
@@ -87,4 +106,48 @@ document.addEventListener("DOMContentLoaded", () => {
   let first = localStorage.page_gen;
   let second = localStorage.page_user;
   scr.innerHTML = parseInt(zero) + parseInt(first) + parseInt(second);
+
+  // function to listen to when the whitelist button is clicked.
+  // This will either add or remove the the site to the whitelist storage for the user.
+  // when the user clicks it 0.5 second later the extension will reload
+  white_btn.addEventListener("click", () => {
+    if (typeof Storage !== "undefined") {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        let url = getHostname(tabs[0].url);
+        let currentStorage = JSON.parse(localStorage.user);
+        let whiteList = currentStorage["white"];
+        let found = false;
+        for (i in whiteList) {
+          if (url === whiteList[i]) {
+            whiteList.splice([i], 1);
+            found = true;
+            white_btn.innerHTML = "Whitelist Site";
+            s.style.display = "none";
+            stats.style.display = "block";
+            blkMsg.style.display = "none";
+            document.body.style.height = "540px";
+            btn.disabled = false;
+            break;
+          }
+        }
+        if (found === false) {
+          whiteList.push(url);
+          white_btn.innerHTML = "Block Site";
+          s.style.display = "block";
+          stats.style.display = "none";
+          blkMsg.style.display = "block";
+          document.body.style.height = "350px";
+          btn.disabled = true;
+        }
+
+        let data = {
+          block: currentStorage["block"],
+          white: whiteList,
+        };
+        localStorage.setItem("user", JSON.stringify(data));
+        chrome.tabs.reload(tabs[0].id);
+        location.reload;
+      });
+    }
+  });
 });

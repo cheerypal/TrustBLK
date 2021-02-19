@@ -8,6 +8,9 @@ if (typeof Storage !== "undefined") {
   if (!localStorage.BLKState) {
     localStorage.setItem("BLKState", "On");
   }
+  if (!localStorage.Blocking) {
+    localStorage.setItem("Blocking", "On");
+  }
 }
 /* Display badge notifying user if the adblocker is on*/
 if (typeof Storage !== "undefined") {
