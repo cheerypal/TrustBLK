@@ -99,13 +99,9 @@
             </p>
             <form id="file_drop1">
               <div class="container-import" id="drop-white">
-                <input
-                  type="file"
-                  class="upload-file"
-                  onchange="handleFiles(this.files)"
-                />
+                <input id="inputFileWhite" type="file" class="upload-file" />
                 <i class="fa fa-upload"></i>
-                <span id="filename">Open File</span>
+                <span id="filenameWhiteList">Open File</span>
               </div>
               <div class="end">
                 <button
@@ -125,8 +121,10 @@
               Here is your personal filter list for blocking rules. Add more
               rules here to block more ads!
             </p>
+            <p id="output-white"></p>
             <div class="container-text">
               <textarea
+                id="text-block-white"
                 class="txt-rules"
                 placeholder="You have no rules, try adding some!"
               ></textarea>

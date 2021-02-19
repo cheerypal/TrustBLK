@@ -39,6 +39,16 @@ userBlock = JSON.parse(localStorage.getItem("user"))["block"];
 // if the current page the user is on is in loading state then the stats that are recorded are reset - page stats.
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading") {
+    if (!localStorage.user) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          block: ["*://*.1-1ads.com/*"],
+          white: ["github.com"],
+        })
+      );
+    }
+
     // check if the site the user is currently on allowed to be accessed with ads.
     let list_allow = allow["white"];
 
@@ -53,16 +63,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         localStorage.setItem("Blocking", "Off");
         break;
       }
-    }
-
-    if (!localStorage.user) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          block: ["*://*.1-1ads.com/*"],
-          white: ["github.com"],
-        })
-      );
     }
   }
 });

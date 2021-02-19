@@ -27,10 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var import_rules_white = document.getElementById("import-rules-white");
   var write_rules_white = document.getElementById("write-rules-white");
 
+  var text_block_white = document.getElementById("text-block-white");
+
   /* Drag and drop DOM */
   var drop_block = document.getElementById("drop-block");
   var drop_white = document.getElementById("drop-white");
   var input = document.getElementById("inputfile");
+  var input_white = document.getElementById("inputFileWhite");
 
   /* form submits */
   var blk_submit = document.getElementById("blk-submit");
@@ -43,12 +46,28 @@ document.addEventListener("DOMContentLoaded", function () {
     JSON.parse(localStorage.getItem("user"))["block"]
   );
 
+  text_block_white.innerHTML = reverseFormatting(
+    JSON.parse(localStorage.getItem("user"))["white"]
+  );
+
   // when the user submits typed in data then the data is then added to storage after button clicked
   blk_submit.addEventListener("click", () => {
     let output = document.getElementById("output");
     let filters = formatFilters(text_block.value);
     let allowData = JSON.parse(localStorage.getItem("user"))["white"];
     let data = { block: filters, white: allowData };
+    localStorage.setItem("user", JSON.stringify(data));
+    output.innerHTML = "New rules added! Extension will restart in 5 seconds";
+    setTimeout(() => {
+      chrome.runtime.reload();
+    }, 5000);
+  });
+
+  wht_submit.addEventListener("click", () => {
+    let output = document.getElementById("output-white");
+    let filters = formatWhiteList(text_block_white.value);
+    let blocked_data = JSON.parse(localStorage.getItem("user"))["block"];
+    let data = { block: blocked_data, white: filters };
     localStorage.setItem("user", JSON.stringify(data));
     output.innerHTML = "New rules added! Extension will restart in 5 seconds";
     setTimeout(() => {
@@ -126,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   drop_block.addEventListener("drop", handleDrop, false);
-  drop_white.addEventListener("drop", handleDrop, false);
+  drop_white.addEventListener("drop", handleDropWhite, false);
 
   function handleDrop(e) {
     let dt = e.dataTransfer;
@@ -134,31 +153,64 @@ document.addEventListener("DOMContentLoaded", function () {
     handleFiles(files);
   }
 
+  function handleDropWhite(e) {
+    let dt = e.dataTransfer;
+    let files = dt.files;
+    handleFilesWhite(files);
+  }
+
   /* triggers the click action to allow the user to 
   open the file explorer to find a filter file. */
   drop_block.addEventListener("click", openFileExplorer, false);
+  drop_white.addEventListener("click", openFileExplorerWhite, false);
+
   input.addEventListener("change", function (evt) {
     var files = evt.target.files;
     handleFiles(files);
   });
+
+  input_white.addEventListener("change", (evt) => {
+    var files = evt.target.files;
+    handleFilesWhite(files);
+  });
+
+  let blk_file = document.getElementById("blk-file-submit");
+  let wht_file = document.getElementById("wht-file-submit");
+
+  blk_file.disabled = true;
+  wht_file.disabled = true;
 });
 
 /* Allows the user to open up the file explorer to pick a file to upload */
-
 function openFileExplorer() {
   var input = document.getElementById("inputfile");
   input.click();
 }
 
+function openFileExplorerWhite() {
+  var input = document.getElementById("inputFileWhite");
+  input.click();
+}
+
 /* handles the files for when the user inserts the file */
 function handleFiles(files) {
+  let show_file = document.getElementById("filename");
+  show_file.innerHTML = files[0].name;
+  let blk_file = document.getElementById("blk-file-submit");
+  blk_file.disabled = false;
+  [...files].forEach(uploadFile);
+}
+
+function handleFilesWhite(files) {
+  let show_file = document.getElementById("filenameWhiteList");
+  show_file.innerHTML = files[0].name;
+  let wht_file = document.getElementById("wht-file-submit");
+  wht_file.disabled = false;
   [...files].forEach(uploadFile);
 }
 
 /* this will render the file and will make the file readable by the adblocker */
 function uploadFile(file) {
-  let show_file = document.getElementById("filename");
-  show_file.innerHTML = file.name;
   var fr = new FileReader();
   fr.onload = () => {
     // when the file is loaded do this
@@ -180,6 +232,27 @@ function uploadFile(file) {
       import_rules.style.display = "none";
       write_rules.style.display = "block";
       out.innerHTML =
+        "Import Complete!<br/>Extension will restart in 5 seconds<br/>Here is your list:";
+      setTimeout(() => {
+        chrome.runtime.reload();
+      }, 5000);
+    });
+
+    let output = document.getElementById("output-white");
+    let wht_file = document.getElementById("wht-file-submit");
+    let text_block_white = document.getElementById("text-block-white");
+    let import_rules_white = document.getElementById("import-rules-white");
+    let write_rules_white = document.getElementById("write-rules-white");
+    // when the button is clicked set the white saved data to the data just imported
+    wht_file.addEventListener("click", () => {
+      let filters = formatWhiteList(fr.result);
+      let blockData = JSON.parse(localStorage.getItem("user"))["block"];
+      let data = { block: blockData, white: filters };
+      localStorage.setItem("user", JSON.stringify(data));
+      text_block_white.innerHTML = reverseFormatting(data.white);
+      import_rules_white.style.display = "none";
+      write_rules_white.style.display = "block";
+      output.innerHTML =
         "Import Complete!<br/>Extension will restart in 5 seconds<br/>Here is your list:";
       setTimeout(() => {
         chrome.runtime.reload();
@@ -261,4 +334,16 @@ function reverseFormatting(list) {
     .replaceAll(",", "\n")
     .replaceAll("*://*.", "||")
     .replaceAll("*://*/*/*", "");
+}
+
+function formatWhiteList(list) {
+  let newList = [];
+  list = list.split("\n");
+  for (i in list) {
+    list[i] = list[i].replace("\r", "");
+    list[i] = list[i].replace("\n", "");
+    newList.push(list[i]);
+  }
+
+  return newList;
 }

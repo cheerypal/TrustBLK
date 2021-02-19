@@ -22,6 +22,7 @@
   --btn-highlight: #f5cb5c;
   --highlight: #000;
   --cont-color: #f5cb5c;
+  --btn-disabled: #5e5f5e;
 }
 
 ::-webkit-scrollbar {
@@ -148,6 +149,20 @@ h3 {
   animation-timing-function: ease-in-out;
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: var(--back-main);
+  color: var(--btn-disabled);
+  border: none;
+}
+
+button:disabled:hover {
+  cursor: not-allowed;
+  border: none;
+  background-color: #696969;
+  animation: none;
 }
 
 @keyframes fade-in {
