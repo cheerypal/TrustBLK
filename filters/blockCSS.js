@@ -495,5 +495,18 @@ a[href*="imdb.com/ad/?id="] img[src*="imdb.com/media/"] {
 .top-ad-container, .ad-rail, div[class*=right-rail], [class*="footer-ad-"]{
   display:none !important;
 }
+.TRUSTBLK-show-ad-img{
+  display: block !important;
+width: 95%;
+}
+
+.TRUSTBLK-highlight{
+  display: block !important;
+  border: 10px solid rgba(245, 203, 92, 0.3);
+  text-align:center;
+  width: 100%;
+}
+
+
 `,
 };
