@@ -51,9 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
           document.body.style.height = "350px";
           btn.disabled = true;
           s.style.display = "block";
+          white_btn.innerHTML = "Block Site";
           break;
         } else {
           s.style.display = "none";
+          white_btn.innerHTML = "Whitelist Site";
         }
       }
     }
