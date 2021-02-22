@@ -2,7 +2,23 @@
 
 Honours Project - Development of a Trustworthy and Fair Ad-Blocker
 
-_This Ad-Blocker only works in chrome!_
+## About The Project
+
+This ad-blocker was created as part of an honours project to study
+and find out if there is a away to have a fair ad-blocker. This
+ad-blocker allows acceptable ads in a fair way by only allowing one
+acceptable ad per webpage. The process of allowing these ads based
+on an algorithm that uses rules and standards set out by the [Acceptable Ads Standard][2].
+
+This ad-blocker aims to allow businesses to still earn money while a
+user is browsing their site by allowing certain ads whilst giving
+the user a complete ad-block experience.
+
+Along with allowing acceptable ads this adblocker blocks
+anti-ad-block scripts and does not contain any user trackers unlike
+its counterparts.
+
+**This Ad-Blocker only works in chrome!**
 
 ## Setup
 
@@ -22,6 +38,7 @@ Additional scripts - to be used when things go wrong!
 
 `python3 listGen.py`
 
-_You must have python3 installed!_
+**You must have python3 installed!**
 
 [1]: chrome://extensions/
+[2]: https://acceptableads.com/standard/

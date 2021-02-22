@@ -62,12 +62,12 @@ h3 {
 }
 
 .links {
-  color: var(--body-color);
+  color: var(--main-color);
   text-decoration: none;
 }
 
 .links:hover {
-  color: var(--main-color);
+  color: #d4a933;
 }
 
 .main {
@@ -292,4 +292,22 @@ textarea::placeholder {
 
 .upload-file {
   display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .main {
+    margin: 5% 20%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    margin: 5% 10%;
+  }
+}
+
+@media screen and(max-width: 750px) {
+  .main {
+    margin: 3%;
+  }
 }
