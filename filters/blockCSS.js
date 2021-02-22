@@ -248,7 +248,7 @@ object[width="728"][height="100"],
 embed[width="728"][height="200"],
 object[width="728"][height="200"],
 embed[width="730"][height="92"],
-object[width="730"][height="92"] {
+object[width="730"][height="92"], object {
  display: none !important;
 }
 /* iframes: by size */
@@ -347,7 +347,7 @@ form[action*="doubleclick.net"] {
 #sponsor, #sponsors, #ad-link, #banner-ad, #masthead-ad, #ad-masthead, #amazon-video-ads-iframe,
 .ad, .advert, .ad-banner, .adbanner, .adbar,
 .sponsor, .sponsors,
-.ad-link, .banner-ad, .masthead-ad .ad-masthead,
+.ad-link, .banner-ad, .banner-ad-top, .masthead-ad .ad-masthead,
 #awin, #adstrip, #adbox, #adFrame, #splashFrame,
 #overture, #spons, #bigad,
 div#dcv_EchangeLay, div#yschsec, div.ovt,          /* unknown */
@@ -497,16 +497,36 @@ a[href*="imdb.com/ad/?id="] img[src*="imdb.com/media/"] {
 }
 .TRUSTBLK-show-ad-img{
   display: block !important;
-width: 95%;
+  
 }
 
 .TRUSTBLK-highlight{
   display: block !important;
   border: 10px solid rgba(245, 203, 92, 0.3);
-  text-align:center;
+}
+
+.TRUSTBLK-button{
+  background-color: #242423;
+  color: #f5cb5c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  outline: none;
+  margin: 0;
+  margin-top: 1%;
+  border:none;
+  font-weight: bold;
+  transition: all ease-in-out 0.3s;
+}
+
+.TRUSTBLK-maxwidth{
   width: 100%;
 }
 
+.TRUSTBLK-button:hover{
+  cursor: pointer;
+  background-color: #f5cb5c;
+  color: #000;
+}
 
 `,
 };

@@ -11,6 +11,9 @@ if (typeof Storage !== "undefined") {
   if (!localStorage.Blocking) {
     localStorage.setItem("Blocking", "On");
   }
+  if (!localStorage.ACCEPT) {
+    localStorage.setItem("ACCEPT", "On");
+  }
 }
 /* Display badge notifying user if the adblocker is on*/
 if (typeof Storage !== "undefined") {
@@ -56,6 +59,15 @@ chrome.runtime.onMessage.addListener((req, send, res) => {
   if (typeof Storage !== "undefined") {
     if (req.reqTotal) {
       res({ tot: localStorage.getItem("tot_blocked") });
+    }
+  }
+});
+
+// check if the acceptbale ads are enabled
+chrome.runtime.onMessage.addListener((req, send, res) => {
+  if (typeof Storage !== "undefined") {
+    if (req.accept) {
+      res({ state_accept: localStorage.getItem("ACCEPT") });
     }
   }
 });

@@ -3604,3 +3604,4 @@
 # youtube-video.download/y-vd.php
 # youtube.com/ad_companion
 # youtube.com/get_video_info?
+127.0.0.1 browser.sentry-cdn.com

@@ -6450,3 +6450,4 @@
 /pagead2.
 /securepubads.
 /watchtime?ns=yt&el=adunit*
+/bugsnag.

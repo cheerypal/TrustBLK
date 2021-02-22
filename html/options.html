@@ -22,9 +22,34 @@
         can change the rules for blocking and allowing ads, import filter lists
         and also change how acceptable ads are highlighted.
       </p>
+      <div class="section">
+        <div class="card">
+          <h3>Acceptable Ads</h3>
+          <p class="description acc">
+            This ad-blocker allows acceptable ads on sites. They must meet
+            strict standards set out by
+            <a class="links" href="https://acceptableads.com/standard/">
+              Acceptable Ads Standard.
+            </a>
+            <br /><br />Only one ad will ever appear on a webpage and can be
+            blocked at the click of a button.
+          </p>
+          <div class="btn-acc">
+            <button id="toggleAcc" class="action-btn btn-acc">
+              Turn <span id="accVal">off</span> this feature
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="section" id="blocking">
         <div class="card">
           <h3>Blocking Rules</h3>
+          <p class="description acc">
+            Edit and add rules for blocking ad-services, scripts and more.
+            <br />
+            <br />
+            Please read the format that this adblocker will accept here : RULES
+          </p>
           <div class="flex-card">
             <button id="import-block" class="action-btn">Import Rules</button>
             <button id="rule-area-block" class="action-btn">
@@ -84,6 +109,12 @@
       <div class="section" id="whiteListing">
         <div class="card">
           <h3>Whitelisting Rules</h3>
+          <p class="description acc">
+            Edit and add websites for whitelisting.
+            <br />
+            <br />
+            Please read the format that this adblocker will accept here : RULES
+          </p>
           <div class="flex-card">
             <button id="import-block-white" class="action-btn">
               Import Rules

@@ -1,15 +1,15 @@
 @font-face {
-  src: url("../../assets//Fonts/Montserrat-Bold.ttf");
+  src: url("../../assets/Fonts/Montserrat-Bold.ttf");
   font-family: "mon-title";
 }
 
 @font-face {
-  src: url("../../assets//Fonts/Montserrat-Regular.ttf");
+  src: url("../../assets/Fonts/Montserrat-Regular.ttf");
   font-family: "mon-body";
 }
 
 @font-face {
-  src: url("../../assets//Fonts/Montserrat-ExtraLight.ttf");
+  src: url("../../assets/Fonts/Montserrat-ExtraLight.ttf");
   font-family: "mon-light";
 }
 :root {
@@ -61,6 +61,15 @@ h3 {
   font-size: 1.8em;
 }
 
+.links {
+  color: var(--body-color);
+  text-decoration: none;
+}
+
+.links:hover {
+  color: var(--main-color);
+}
+
 .main {
   margin: 5% 30%;
 }
@@ -82,6 +91,7 @@ h3 {
 }
 
 .flex-card {
+  margin-top: 3%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -192,6 +202,16 @@ button:disabled:hover {
   padding: 20px;
   font-size: 1.2em;
   text-align: center;
+}
+
+.acc {
+  text-align: left;
+  padding: 0;
+}
+
+.btn-acc {
+  text-align: center;
+  margin-top: 2%;
 }
 
 .container-import {

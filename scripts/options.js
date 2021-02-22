@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
   };
 
+  /* Acceptable Ads */
+  var btn_acc = document.getElementById("toggleAcc");
+  var acc_val = document.getElementById("accVal");
+
   /* Block Options */
   var import_btn = document.getElementById("import-block");
   var rule_btn = document.getElementById("rule-area-block");
@@ -51,6 +55,27 @@ document.addEventListener("DOMContentLoaded", function () {
   text_block_white.innerHTML = reverseFormatting(
     JSON.parse(localStorage.getItem("user"))["white"]
   );
+
+  function invert(val) {
+    if (val === "On") return "Off";
+    else return "On";
+  }
+
+  // get the current value of the feature - AAC - Acceptable Ads
+  acc_val.innerHTML = invert(localStorage.ACCEPT);
+
+  //button to turn off - AAC - Acceptable Ads
+  btn_acc.addEventListener("click", () => {
+    if (typeof Storage !== "undefined") {
+      if (localStorage.ACCEPT === "On") {
+        localStorage.setItem("ACCEPT", "Off");
+        acc_val.innerHTML = "On";
+      } else {
+        localStorage.setItem("ACCEPT", "On");
+        acc_val.innerHTML = "Off";
+      }
+    }
+  });
 
   // when the user submits typed in data then the data is then added to storage after button clicked
   blk_submit.addEventListener("click", () => {
