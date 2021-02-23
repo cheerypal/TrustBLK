@@ -1,6 +1,6 @@
 # TrustBLK
 
-Honours Project - Development of a Trustworthy and Fair Ad-Blocker
+Honours Project - Trustworthy and Fair Ad-Blocker
 
 ## About The Project
 
