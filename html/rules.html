@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/rules.css" />
+    <script src="../scripts/rules"></script>
+    <title>TrustBLK - Rules</title>
+  </head>
+  <body class="preload">
+    <div class="main">
+      <h1>Rules</h1>
+      <p class="text">
+        TrustBLK makes adding filters simple and easy. Just follow these rules
+        to either block ad-services, scripts or certain page elements, or, to
+        whitelist websites.
+      </p>
+      <p class="text">
+        .txt files should be used for inserting filter lists into the ad-blocker
+        where each line is a new filter. One filter per line also applies to
+        when manually typing filters in the textbox!
+        <br /><br />
+        <span class="highlight"
+          >Not using .txt files and using multiple filters on lines will result
+          in your filters not working!</span
+        >
+      </p>
+      <!-- Blocking -->
+      <div class="section" id="Blocking">
+        <div class="card">
+          <h3>Blocking</h3>
+          <p class="text">
+            These are rules that will apply when you want to block elements from
+            showing on websites.
+            <br /><br />
+            <span class="highlight"
+              >The following rules apply to files that are inserted as well as
+              filters that are typed into the textbox!
+            </span>
+          </p>
+
+          <div class="section">
+            <h4>Hosts</h4>
+            <p class="text">
+              Hosts are servers that are used for serving ads to websites.
+              <br /><br />
+              To add a host please place
+              <code><span class="highlight">||</span></code> infront of the
+              hostname like this: <br /><br />
+              <code><span class="highlight">||</span>example.com</code>
+              or
+              <code><span class="highlight">||</span>github.com</code>
+              <br /><br />This will block all requests from this location.
+            </p>
+          </div>
+          <hr />
+          <div class="section">
+            <h4>Specific Host Locations</h4>
+            <p class="text">
+              If you want to block a specific location within a host, e.g. block
+              the <code>/ads</code> location. This is also very easy!
+              <br /><br />
+              To add a specific host location please place
+              <code><span class="highlight">#</span></code> infront of the host
+              like this:<br /><br />
+              <code><span class="highlight">#</span>example.com/ads</code> or
+              <code
+                ><span class="highlight">#</span
+                >example.com/ads/server/thisad</code
+              >
+              <br /><br />This will block any request to this specific location
+              and any locations that will come after. This will however not
+              block all requests from this location. In this case other requests
+              from <code>example.com</code> will be allowed.
+            </p>
+          </div>
+          <hr />
+          <div class="section">
+            <h4>General Blocking</h4>
+            <p class="text">
+              This type of blocking is mainly for scripts and page content that
+              will load when the website loads (scripts, images, etc.).
+              <br /><br />To add an item to be blocked please place
+              <code><span class="highlight">/</span></code> infront of the item.
+              <br /><br />
+              This style of blocking also requires a specific suffix to be added
+              to the item! You can use any of these qualifiers:<br /><br /><br />
+              <span class="section">
+                Add <code><span class="highlight">.</span></code> to the end of
+                the item - this will tell the blocker that this item is a file
+                that should be blocked.
+                <span class="highlight"
+                  >Adding a file extension to the item will also be
+                  accepted!</span
+                >
+                Here are some examples of a file that would get blocked:
+                <br /><br />
+                <code
+                  ><span class="highlight">/</span>antiadblock<span
+                    class="highlight"
+                    >.</span
+                  >
+                </code>
+                or
+                <code
+                  ><span class="highlight">/</span>banner_ad<span
+                    class="highlight"
+                    >.</span
+                  >
+                </code>
+                or
+                <code
+                  ><span class="highlight">/</span>antiadblock<span
+                    class="highlight"
+                    >.js
+                  </span></code
+                >
+                <br /><br />
+                Adding only <code><span class="highlight">.</span></code> to the
+                end of the filter will block any file! <br />
+                <br /><br />
+              </span>
+              <span class="section">
+                Add <code><span class="highlight">/</span></code> or<code
+                  ><span class="highlight">*</span></code
+                >
+                to the end of the item - this will tell the ad-blocker that this
+                is part of a path for a host. Here are some more examples of
+                items that could get blocked:
+                <br /><br />
+                <code
+                  ><span class="highlight">/</span>banner<span class="highlight"
+                    >/</span
+                  ></code
+                >
+                or
+                <code
+                  ><span class="highlight">/</span>banner_ad<span
+                    class="highlight"
+                    >*</span
+                  ></code
+                >
+              </span>
+              <br />
+              <br />
+              <br />
+              The style of blocking allows the ad-blocker to block any item that
+              matches this form. This is not restricted to certain hosts or
+              websites like the host blocking rules; as described above. This
+              does not mean that this should be the go to method of blocking -
+              blocking direct items from a host with the
+              <code><span class="highlight">#</span></code> is a more accurate
+              method of blocking.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- whitelisting -->
+      <div class="section" id="Whitelisting">
+        <div class="card">
+          <h3>Whitelisting</h3>
+          <p class="text">
+            When you whitelist a site, you allow that site to display ads.
+            <br /><br />TrustBLK makes it easy to whitelist sites, either click
+            the whitelist button on the popup or enter the hostname of the site
+            you want to allow ads on. <br /><br /><span class="highlight"
+              >The following rules apply to files that are inserted as well as
+              filters that are typed into the textbox! </span
+            ><br /><br />
+            When inserting hostnames into the textbox on the settings page only
+            include the hostname, please remove the
+            <code><span class="highlight">https://</span></code> or
+            <code><span class="highlight">http://</span></code> and any
+            preceding paths.<br /><br />Hostnames
+            <span class="highlight">should </span> look like:<br /><br />
+            <code>github.com</code> or <code>www.businessinsider.com</code>
+            <br /><br />
+            Hostnames <span class="highlight">should not</span> look like:<br /><br />
+            <code>github.com/cheerypal/some/location</code> or
+            <code>https://www.businessinsider.com</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
