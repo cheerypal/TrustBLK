@@ -77,8 +77,8 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
-        localStorage.setItem("tot_blocked", overall++);
         localStorage.setItem("page_ads", ++currentAds);
+        localStorage.setItem("tot_blocked", ++overall);
         chrome.browserAction.setBadgeText({ text: "" + currentAds });
         return { cancel: true };
       } else return { cancel: false };
@@ -92,8 +92,9 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
-        localStorage.setItem("tot_blocked", overall++);
-        localStorage.setItem("page_scr", currentScripts++);
+        localStorage.setItem("page_scr", ++currentScripts);
+        localStorage.setItem("tot_blocked", ++overall);
+
         return { cancel: true };
       } else return { cancel: false };
     },
@@ -106,8 +107,9 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
-        localStorage.setItem("tot_blocked", overall++);
-        localStorage.setItem("page_gen", currentGen++);
+        localStorage.setItem("page_gen", ++currentGen);
+        localStorage.setItem("tot_blocked", ++overall);
+
         return { cancel: true };
       } else return { cancel: false };
     },
@@ -120,8 +122,9 @@ if (typeof Storage !== "undefined") {
   chrome.webRequest.onBeforeRequest.addListener(
     () => {
       if (localStorage.BLKState === "On" && localStorage.Blocking === "On") {
-        localStorage.setItem("tot_blocked", overall++);
-        localStorage.setItem("page_user", userBLKNum++);
+        localStorage.setItem("page_user", ++userBLKNum);
+        localStorage.setItem("tot_blocked", ++overall);
+
         return { cancel: true };
       } else return { cancel: false };
     },
