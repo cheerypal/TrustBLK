@@ -2,6 +2,7 @@
 
 /* Set up badge for showing how many ads have been blocked */
 chrome.browserAction.setBadgeBackgroundColor({ color: "#242423" });
+chrome.browserAction.setBadgeText({ text: "" });
 
 if (typeof Storage !== "undefined") {
   /* init check for any local storage */
