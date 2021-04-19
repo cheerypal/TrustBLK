@@ -64,12 +64,11 @@ h3 {
 }
 
 .links {
-  color: var(--main-color);
-  text-decoration: none;
+  color: #d4a933;
 }
 
 .links:hover {
-  color: #d4a933;
+  color: #f0b40f;
 }
 
 .main {
