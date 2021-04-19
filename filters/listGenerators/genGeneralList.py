@@ -19,7 +19,6 @@ def formatGeneral(x):
     # remove current styling 
     mod_x = mod_x.replace("/*", "")
     
-
     # insert the * at the start of the filter 
     mod_x = "*"+ str(mod_x)
 
